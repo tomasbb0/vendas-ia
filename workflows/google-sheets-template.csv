@@ -1,0 +1,4 @@
+Timestamp,Nome,Email,Empresa,Website,Telefone,IA_Score,IA_Motivo
+24/10/2024 10:30,João Silva,joao@techstartup.pt,TechStartup,https://techstartup.pt,+351 912 345 678,8,Empresa tech com 25 funcionários e email corporativo
+24/10/2024 11:15,Maria Santos,maria@example.com,Exemplo Lda,https://exemplo.pt,,4,Email não corporativo e empresa pequena
+24/10/2024 14:20,Pedro Costa,pedro@digitalagency.pt,Digital Agency,https://digitalagency.pt,+351 918 765 432,9,Agência digital com 40 funcionários e website profissional

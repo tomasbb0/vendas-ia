@@ -1,0 +1,44 @@
+# VendasIA - Git Ignore
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# API Keys & Secrets
+**/api-keys.txt
+**/secrets.txt
+credentials.json
+
+# Personal Data
+outreach/prospect-list.csv
+tracking/daily-activity.csv
+tracking/customer-data.csv
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Build files
+dist/
+build/
+node_modules/
+
+# Backups
+*.bak
+backup/

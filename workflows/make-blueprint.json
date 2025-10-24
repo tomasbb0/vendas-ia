@@ -1,0 +1,130 @@
+{
+  "name": "VendasIA - Lead Qualification Pipeline",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": "your-webhook-id-here",
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {},
+        "expect": [
+          {
+            "name": "nome",
+            "type": "text",
+            "label": "Nome",
+            "required": true
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "label": "Email",
+            "required": true
+          },
+          {
+            "name": "empresa",
+            "type": "text",
+            "label": "Empresa",
+            "required": true
+          },
+          {
+            "name": "website",
+            "type": "url",
+            "label": "Website"
+          },
+          {
+            "name": "telefone",
+            "type": "text",
+            "label": "Telefone"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "openai:CreateCompletion",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-4-turbo",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Analisa este lead B2B português e dá uma pontuação de 1-10:\n\nNome: {{1.nome}}\nEmail: {{1.email}}\nEmpresa: {{1.empresa}}\nWebsite: {{1.website}}\nTelefone: {{1.telefone}}\n\nCritérios de qualificação:\n- Empresa 10+ funcionários: +3 pontos\n- Website profissional: +2 pontos\n- Email corporativo: +2 pontos\n- Setor SaaS/Tech: +2 pontos\n- Telefone preenchido: +1 ponto\n\nResponde apenas com:\nSCORE: [1-10]\nMOTIVO: [razão em 1 frase]"
+          }
+        ],
+        "temperature": 0.3,
+        "max_tokens": 150
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-sheets:addRow",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "spreadsheetId": "YOUR_SPREADSHEET_ID",
+        "sheetId": "Sheet1",
+        "values": [
+          "{{formatDate(now; \"DD/MM/YYYY HH:mm\")}}",
+          "{{1.nome}}",
+          "{{1.email}}",
+          "{{1.empresa}}",
+          "{{1.website}}",
+          "{{1.telefone}}",
+          "{{parseNumber(substring(2.choices[0].message.content; 7; 8))}}",
+          "{{substring(2.choices[0].message.content; indexOf(2.choices[0].message.content; \"MOTIVO:\") + 8; length(2.choices[0].message.content))}}"
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 4,
+      "module": "google-email:SendEmail",
+      "version": 1,
+      "parameters": {},
+      "filter": {
+        "name": "Only Hot Leads",
+        "conditions": [
+          [
+            {
+              "a": "{{parseNumber(substring(2.choices[0].message.content; 7; 8))}}",
+              "o": "number:greaterOrEqual",
+              "b": "7"
+            }
+          ]
+        ]
+      },
+      "mapper": {
+        "to": "seu.email@gmail.com",
+        "subject": "🔥 Lead Quente: {{1.empresa}}",
+        "html": "<h2>Nova lead qualificada no VendasIA!</h2><h3>👤 CONTACTO:</h3><p>Nome: {{1.nome}}<br>Email: {{1.email}}<br>Empresa: {{1.empresa}}<br>Website: {{1.website}}<br>Telefone: {{1.telefone}}</p><h3>🤖 ANÁLISE IA:</h3><p>Score: {{parseNumber(substring(2.choices[0].message.content; 7; 8))}}/10<br>Motivo: {{substring(2.choices[0].message.content; indexOf(2.choices[0].message.content; \"MOTIVO:\") + 8; length(2.choices[0].message.content))}}</p><p><a href=\"YOUR_GOOGLE_SHEETS_URL\">Ver todos os leads</a></p>"
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 0
+        }
+      }
+    }
+  ]
+}

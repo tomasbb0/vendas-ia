@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendasIA - O Seu Estagiário de Vendas IA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .hero {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3em; margin-bottom: 20px; }
+        .hero p { font-size: 1.3em; margin-bottom: 30px; opacity: 0.95; }
+        .cta-button {
+            background: white;
+            color: #2563eb;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        .cta-button:hover { transform: scale(1.05); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .benefit { text-align: center; padding: 30px; }
+        .benefit h3 { font-size: 1.5em; margin: 20px 0; }
+        .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 60px 0; }
+        .price-card { 
+            border: 2px solid #e5e7eb; 
+            border-radius: 12px; 
+            padding: 40px 30px; 
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .price-card:hover { transform: translateY(-5px); border-color: #2563eb; }
+        .price-card.popular { border-color: #2563eb; background: #eff6ff; }
+        .price { font-size: 2.5em; font-weight: bold; color: #2563eb; margin: 20px 0; }
+        .form-container { max-width: 500px; margin: 60px auto; padding: 40px; background: #f9fafb; border-radius: 12px; }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1em;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>VendasIA</h1>
+        <p>O Seu Estagiário de Vendas IA</p>
+        <h2>Pare de Perder Tempo com Leads Não Qualificados</h2>
+        <p>Poupamos 20-40 horas por mês à sua equipa de vendas com qualificação automática por IA</p>
+        <a href="#comecar" class="cta-button">Comece Grátis - 14 Dias</a>
+    </section>
+
+    <div class="container">
+        <div class="benefits">
+            <div class="benefit">
+                <div style="font-size: 3em;">🤖</div>
+                <h3>Qualificação Automática</h3>
+                <p>IA analisa leads com GPT-4, trabalha 24/7, respostas em português</p>
+            </div>
+            <div class="benefit">
+                <div style="font-size: 3em;">📊</div>
+                <h3>Enriquecimento de Dados</h3>
+                <p>Informação da empresa, contactos LinkedIn, dados de faturação</p>
+            </div>
+            <div class="benefit">
+                <div style="font-size: 3em;">⚡</div>
+                <h3>Integração Simples</h3>
+                <p>Conecta com Pipedrive, notificações automáticas, setup em 5 minutos</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 60px 0; padding: 40px; background: #f9fafb; border-radius: 12px;">
+            <p style="font-size: 1.3em; font-style: italic;">"Poupámos 30 horas por mês na qualificação de leads. O ROI foi imediato."</p>
+            <p style="margin-top: 10px;"><strong>— João Silva, CEO TechStartup</strong></p>
+        </div>
+
+        <h2 style="text-align: center; font-size: 2.5em; margin-bottom: 40px;">Preçário</h2>
+        <div class="pricing">
+            <div class="price-card">
+                <h3>Starter</h3>
+                <div class="price">€49<span style="font-size: 0.4em;">/mês</span></div>
+                <ul style="text-align: left; list-style: none; padding: 0;">
+                    <li>✓ 100 leads qualificados</li>
+                    <li>✓ Integração básica</li>
+                    <li>✓ Suporte email</li>
+                </ul>
+            </div>
+            <div class="price-card popular">
+                <div style="background: #2563eb; color: white; padding: 5px; margin: -40px -30px 20px; border-radius: 10px 10px 0 0;">⭐ POPULAR</div>
+                <h3>Professional</h3>
+                <div class="price">€99<span style="font-size: 0.4em;">/mês</span></div>
+                <ul style="text-align: left; list-style: none; padding: 0;">
+                    <li>✓ 500 leads qualificados</li>
+                    <li>✓ Integrações avançadas</li>
+                    <li>✓ Suporte prioritário</li>
+                </ul>
+            </div>
+            <div class="price-card">
+                <h3>Enterprise</h3>
+                <div class="price">€199<span style="font-size: 0.4em;">/mês</span></div>
+                <ul style="text-align: left; list-style: none; padding: 0;">
+                    <li>✓ Leads ilimitados</li>
+                    <li>✓ Custom integrations</li>
+                    <li>✓ Suporte telefónico</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="comecar" class="form-container">
+            <h2 style="text-align: center; margin-bottom: 30px;">Comece Hoje - Grátis</h2>
+            <form action="YOUR_MAKE_WEBHOOK_URL" method="POST">
+                <input type="text" name="nome" placeholder="Seu nome completo" required>
+                <input type="email" name="email" placeholder="Email empresarial" required>
+                <input type="text" name="empresa" placeholder="Nome da empresa" required>
+                <input type="url" name="website" placeholder="Website da empresa (opcional)">
+                <input type="tel" name="telefone" placeholder="Telefone (opcional)">
+                <button type="submit">Começar Teste Grátis 14 Dias</button>
+                <p style="text-align: center; margin-top: 15px; font-size: 0.9em; color: #6b7280;">Sem cartão de crédito. Cancele quando quiser.</p>
+            </form>
+        </div>
+    </div>
+
+    <footer style="background: #1f2937; color: white; padding: 40px 20px; text-align: center;">
+        <p>VendasIA - O Seu Estagiário de Vendas IA</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Lisboa, Portugal | ola@vendas-ia.com</p>
+    </footer>
+</body>
+</html>
