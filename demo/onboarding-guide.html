@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendasIA - Guia de Onboarding</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 25px;
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 25px;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+
+        .progress-line-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+        }
+
+        .step.completed .step-circle {
+            border-color: #10b981;
+            background: #10b981;
+            color: white;
+        }
+
+        .step.active .step-circle {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .step-label {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-icon {
+            font-size: 1.2em;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .timeline-item p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        .checklist-item {
+            padding: 15px;
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checklist-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .tech-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .tech-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tech-desc {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .metric {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 3px solid #667eea;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            color: #666;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .workflow-visual {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .workflow-icon {
+            font-size: 2.5em;
+            margin-right: 20px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .workflow-arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .workflow-content h4 {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .workflow-content p {
+            color: #666;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f39c12;
+            margin: 20px 0;
+        }
+
+        .highlight strong {
+            color: #d68910;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🚀 Bem-vindo ao VendasIA</h1>
+            <p>O teu assistente de vendas com IA está pronto para poupar 20-40 horas por mês<br>
+            Vamos perceber o produto que estás a construir!</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-steps">
+                <div class="progress-line">
+                    <div class="progress-line-fill" id="progressFill"></div>
+                </div>
+                <div class="step completed">
+                    <div class="step-circle">✓</div>
+                    <div class="step-label">Setup</div>
+                </div>
+                <div class="step active">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Compreender</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Construir</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Lançar</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">5</div>
+                    <div class="step-label">Cliente #1</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="card-icon">🎯</span> O Que É o VendasIA?</h2>
+            <p style="font-size: 1.2em; line-height: 1.8; color: #666; margin-bottom: 30px;">
+                O VendasIA é um <strong>assistente de vendas com Inteligência Artificial</strong> que qualifica automaticamente leads B2B para empresas portuguesas. Em vez de gastares 20 minutos a pesquisar cada lead manualmente, a IA faz isso em 30 segundos.
+            </p>
+
+            <div class="metric-grid">
+                <div class="metric">
+                    <div class="metric-value">30s</div>
+                    <div class="metric-label">Qualificação/Lead</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">24/7</div>
+                    <div class="metric-label">Sempre Ativo</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">€49</div>
+                    <div class="metric-label">Custo/Mês</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">500%</div>
+                    <div class="metric-label">ROI Típico</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="card-icon">⚙️</span> Como Funciona (Arquitetura Simples)</h2>
+            
+            <div class="workflow-visual">
+                <div class="workflow-step">
+                    <div class="workflow-icon">📝</div>
+                    <div class="workflow-content">
+                        <h4>1. Lead Preenche Formulário</h4>
+                        <p>No teu website/landing page criada com Carrd.co</p>
+                    </div>
+                </div>
+
+                <div class="workflow-arrow">↓</div>
+
+                <div class="workflow-step">
+                    <div class="workflow-icon">🔗</div>
+                    <div class="workflow-content">
+                        <h4>2. Make.com Recebe Dados (Webhook)</h4>
+                        <p>Automação captura: nome, email, empresa, website, telefone</p>
+                    </div>
+                </div>
+
+                <div class="workflow-arrow">↓</div>
+
+                <div class="workflow-step">
+                    <div class="workflow-icon">🤖</div>
+                    <div class="workflow-content">
+                        <h4>3. GPT-4 Analisa Lead</h4>
+                        <p>IA verifica: tamanho empresa, email corporativo, setor, qualidade</p>
+                    </div>
+                </div>
+
+                <div class="workflow-arrow">↓</div>
+
+                <div class="workflow-step">
+                    <div class="workflow-icon">📊</div>
+                    <div class="workflow-content">
+                        <h4>4. Google Sheets Guarda Dados</h4>
+                        <p>Todos os leads salvos com score (1-10) e motivo</p>
+                    </div>
+                </div>
+
+                <div class="workflow-arrow">↓</div>
+
+                <div class="workflow-step">
+                    <div class="workflow-icon">📧</div>
+                    <div class="workflow-content">
+                        <h4>5. Gmail Notifica (Se Score ≥7)</h4>
+                        <p>Email automático para equipa de vendas com leads quentes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <strong>💡 O Génio:</strong> Tudo isto acontece em <strong>30 segundos</strong> sem intervenção humana. A tua equipa só é notificada dos leads com alta probabilidade de conversão!
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="card-icon">🛠️</span> Stack Tecnológica (No-Code MVP)</h2>
+            
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-icon">🔄</div>
+                    <div class="tech-name">Make.com</div>
+                    <div class="tech-desc">Motor de automação<br>Grátis: 1000 ops/mês</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🧠</div>
+                    <div class="tech-name">OpenAI GPT-4</div>
+                    <div class="tech-desc">Inteligência Artificial<br>~€2/mês (100 leads)</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📊</div>
+                    <div class="tech-name">Google Sheets</div>
+                    <div class="tech-desc">Base de dados<br>Grátis</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🌐</div>
+                    <div class="tech-name">Carrd.co</div>
+                    <div class="tech-desc">Landing page<br>€19/ano</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📧</div>
+                    <div class="tech-name">Gmail</div>
+                    <div class="tech-desc">Notificações<br>Grátis</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px; padding: 20px; background: #e8f5e9; border-radius: 10px; text-align: center; font-size: 1.1em;">
+                <strong>💰 Custo Total: €3.58/mês</strong> para servir 100 leads
+            </p>
+        </div>
+
+        <div class="card">
+            <h2><span class="card-icon">📅</span> Plano de Fim de Semana</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Sábado Manhã (9:00-12:00) - Construir Automação</h3>
+                    <p>Vais criar o "cérebro" do VendasIA - o workflow que faz tudo funcionar.</p>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Criar conta Make.com</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Obter API key da OpenAI (GPT-4)</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Criar Google Sheet "VendasIA-Leads"</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Configurar workflow: Webhook → GPT-4 → Sheets → Gmail</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Testar com 3 leads de exemplo</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Ativar workflow (toggle ON)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Sábado Tarde (14:00-17:00) - Marketing</h3>
+                    <p>Criar a "cara" do VendasIA - website e materiais de venda.</p>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Criar landing page no Carrd.co</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Adicionar formulário conectado ao webhook</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Publicar em vendas-ia.carrd.co</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Gravar vídeo demo de 90 segundos</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Criar pitch deck (5 slides)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Domingo Manhã (9:00-11:00) - Pesquisa</h3>
+                    <p>Encontrar os teus primeiros 50 clientes potenciais.</p>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Pesquisar 15 SaaS portuguesas no LinkedIn</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Encontrar 10 agências digitais</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Identificar 10 empresas de consultoria</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Encontrar 15 tech services</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Para cada: nome CEO, perfil LinkedIn, nota de personalização</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Domingo Tarde (14:00-17:00) - Lançamento! 🚀</h3>
+                    <p>Contactar os teus primeiros 50 prospects no LinkedIn.</p>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Enviar 20 mensagens a CEOs/Founders</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Enviar 20 mensagens a Sales Directors</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Enviar 10 mensagens a Marketing Heads</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Registar todos em tracking spreadsheet</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox">
+                            <span>Configurar follow-ups para próxima semana</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="card-icon">🎯</span> Próxima Semana - Conversão</h2>
+            
+            <div class="highlight">
+                <strong>⚡ Meta da Semana 1:</strong> Fechar 2 clientes = €98 MRR (Receita Mensal Recorrente)
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric">
+                    <div class="metric-value">50</div>
+                    <div class="metric-label">Mensagens LinkedIn</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">12</div>
+                    <div class="metric-label">Respostas Esperadas (24%)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">Demos Agendadas</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Clientes Fechados</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px;">📞 Rotina Diária (2 horas)</h3>
+            <div class="checklist">
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span><strong>Manhã (1h):</strong> Responder mensagens LinkedIn, agendar demos</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span><strong>Tarde (1h):</strong> Fazer demos, enviar follow-ups, 10 novas mensagens</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="card-icon">💡</span> O Teu Pitch (Memoriza Isto)</h2>
+            
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 15px; font-size: 1.2em; line-height: 2;">
+                <p><strong style="font-size: 1.3em;">Problema:</strong><br>
+                "A vossa equipa de vendas perde 60% do tempo a qualificar leads que nunca vão converter."</p>
+                
+                <p style="margin-top: 25px;"><strong style="font-size: 1.3em;">Solução:</strong><br>
+                "O VendasIA usa IA para qualificar leads automaticamente 24/7, poupando 20-40 horas por mês."</p>
+                
+                <p style="margin-top: 25px;"><strong style="font-size: 1.3em;">ROI:</strong><br>
+                "Por €49/mês, poupam €300-600 em tempo. Retorno de 500-1200% imediato."</p>
+                
+                <p style="margin-top: 25px;"><strong style="font-size: 1.3em;">Call to Action:</strong><br>
+                "14 dias grátis para testar. Sem cartão de crédito. Cancela quando quiseres."</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="card-icon">📈</span> Visão de Crescimento</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Mês 1: Validação (€147-245 MRR)</h3>
+                    <p>✅ 3-5 clientes pagantes<br>
+                    ✅ Feedback e testemunhos<br>
+                    ✅ Processo de vendas refinado</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Mês 2-3: Escala Inicial (€392-980 MRR)</h3>
+                    <p>✅ 8-20 clientes<br>
+                    ✅ Marketing de conteúdo<br>
+                    ✅ Programa de referências</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Mês 6: Produto Real (€3,920-5,880 MRR)</h3>
+                    <p>✅ 80-120 clientes<br>
+                    ✅ Fork Activepieces/Langflow<br>
+                    ✅ Contratar desenvolvedor</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Mês 12: Y Combinator Ready (€10,000+ MRR)</h3>
+                    <p>✅ 200+ clientes<br>
+                    ✅ Equipa pequena<br>
+                    ✅ Full-time no VendasIA</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 50px 0;">
+            <a href="../demo/interactive-demo.html" class="btn-primary" style="margin-right: 20px;">
+                🎮 Ver Demo Interativo
+            </a>
+            <a href="../docs/SETUP-GUIDE.md" class="btn-primary">
+                📖 Começar Setup
+            </a>
+        </div>
+
+        <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white;">💪 Estás Pronto!</h2>
+            <p style="font-size: 1.3em; line-height: 1.8;">
+                Agora percebes <strong>o que</strong> estás a construir, <strong>como</strong> funciona, e <strong>porquê</strong> vai ter sucesso.
+            </p>
+            <p style="font-size: 1.3em; line-height: 1.8; margin-top: 20px;">
+                O teu primeiro cliente está a 48 horas de distância. 🚀
+            </p>
+            <p style="font-size: 1.6em; margin-top: 30px; text-align: center;">
+                <strong>Let's build VendasIA! 🇵🇹</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Animate progress bar
+        setTimeout(() => {
+            document.getElementById('progressFill').style.width = '25%';
+        }, 500);
+
+        // Save checkbox state
+        document.querySelectorAll('.checklist-item input').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checkedCount = document.querySelectorAll('.checklist-item input:checked').length;
+                const totalCount = document.querySelectorAll('.checklist-item input').length;
+                const progress = (checkedCount / totalCount) * 100;
+                console.log(`Progresso: ${Math.round(progress)}%`);
+            });
+        });
+    </script>
+</body>
+</html>

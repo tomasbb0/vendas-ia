@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendasIA - Demo Interativo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .result-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .score {
+            font-size: 4em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+        }
+
+        .score-label {
+            font-size: 0.3em;
+            color: #666;
+        }
+
+        .reason {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 3px solid #667eea;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            display: block;
+            animation: slideInRight 0.5s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .hot-lead {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🤖 VendasIA</div>
+            <div class="tagline">O Seu Estagiário de Vendas com Inteligência Artificial</div>
+        </div>
+
+        <div class="demo-section">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('demo')">🎯 Demo Ao Vivo</button>
+                <button class="tab" onclick="switchTab('how')">⚙️ Como Funciona</button>
+                <button class="tab" onclick="switchTab('roi')">💰 Retorno</button>
+            </div>
+
+            <!-- Tab 1: Demo -->
+            <div id="demo" class="tab-content active">
+                <h2 class="section-title">
+                    <span>📋</span> Teste o VendasIA Agora
+                </h2>
+                <p style="color: #666; margin-bottom: 30px;">
+                    Preencha os dados de um lead e veja a IA qualificar em tempo real
+                </p>
+
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label>Nome do Contacto</label>
+                        <input type="text" id="nome" placeholder="João Silva" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Empresarial</label>
+                        <input type="email" id="email" placeholder="joao@empresa.pt" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nome da Empresa</label>
+                        <input type="text" id="empresa" placeholder="TechStartup Lda" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Website (opcional)</label>
+                        <input type="url" id="website" placeholder="https://empresa.pt">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefone (opcional)</label>
+                        <input type="tel" id="telefone" placeholder="+351 912 345 678">
+                    </div>
+
+                    <button type="submit" class="btn">🚀 Qualificar Lead com IA</button>
+                </form>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 20px; color: #666;">IA a analisar o lead...</p>
+                </div>
+
+                <div class="result-box" id="result">
+                    <h3>📊 Resultado da Análise IA</h3>
+                    <div class="score" id="score">-</div>
+                    <div class="reason" id="reason">
+                        <strong>💡 Motivo:</strong>
+                        <p id="reasonText">-</p>
+                    </div>
+                    <div id="emailNotif" style="margin-top: 20px; padding: 15px; background: #d4edda; border-radius: 10px; display: none;">
+                        <strong class="hot-lead">🔥 Lead Quente Detectado!</strong>
+                        <p>Email de notificação enviado automaticamente para a equipa de vendas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: How It Works -->
+            <div id="how" class="tab-content">
+                <h2 class="section-title">
+                    <span>⚙️</span> Como o VendasIA Funciona
+                </h2>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-title">1. Lead Submete Formulário</div>
+                        <p>No seu website, landing page ou CRM</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <div class="feature-title">2. IA Analisa</div>
+                        <p>GPT-4 avalia empresa, email, website, setor</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">3. Score 1-10</div>
+                        <p>Pontuação automática baseada em critérios</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📧</div>
+                        <div class="feature-title">4. Notificação</div>
+                        <p>Email automático se score ≥7</p>
+                    </div>
+                </div>
+
+                <h3 style="margin: 40px 0 20px;">📏 Critérios de Qualificação</h3>
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px;">
+                    <ul style="list-style: none; line-height: 2;">
+                        <li>✅ <strong>Empresa 10+ funcionários:</strong> +3 pontos</li>
+                        <li>✅ <strong>Website profissional:</strong> +2 pontos</li>
+                        <li>✅ <strong>Email corporativo:</strong> +2 pontos</li>
+                        <li>✅ <strong>Setor SaaS/Tech:</strong> +2 pontos</li>
+                        <li>✅ <strong>Telefone preenchido:</strong> +1 ponto</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tab 3: ROI -->
+            <div id="roi" class="tab-content">
+                <h2 class="section-title">
+                    <span>💰</span> Retorno do Investimento
+                </h2>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">20-40h</div>
+                        <div class="stat-label">Tempo Poupado/Mês</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">€49</div>
+                        <div class="stat-label">Custo Mensal</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">€300+</div>
+                        <div class="stat-label">Valor em Tempo</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">500%+</div>
+                        <div class="stat-label">ROI</div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 40px 0 20px;">📈 Exemplo Real: TechStartup com 25 funcionários</h3>
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; line-height: 1.8;">
+                    <p><strong>Situação Atual (Manual):</strong></p>
+                    <ul style="margin: 15px 0 15px 30px;">
+                        <li>50 leads/semana × 20 min/lead = <strong>16.7 horas/semana</strong></li>
+                        <li>16.7h × 4 semanas = <strong>66.8 horas/mês</strong></li>
+                        <li>Custo: 66.8h × €15/hora = <strong>€1,002/mês</strong></li>
+                    </ul>
+
+                    <p style="margin-top: 25px;"><strong>Com VendasIA:</strong></p>
+                    <ul style="margin: 15px 0 15px 30px;">
+                        <li>Qualificação automática: <strong>30 segundos/lead</strong></li>
+                        <li>Tempo da equipa: <strong>20 horas/mês</strong> (70% redução)</li>
+                        <li>Custo VendasIA: <strong>€49/mês</strong></li>
+                    </ul>
+
+                    <p style="margin-top: 25px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; text-align: center; font-size: 1.2em;">
+                        <strong>💰 Poupança: €953/mês = €11,436/ano</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <strong>✅ Lead guardado!</strong>
+        <p>Dados salvos na Google Sheet automaticamente</p>
+    </div>
+
+    <script>
+        // Sample leads for demo
+        const sampleLeads = [
+            {
+                nome: 'João Silva',
+                email: 'joao@techstartup.pt',
+                empresa: 'TechStartup',
+                website: 'https://techstartup.pt',
+                telefone: '+351 912 345 678'
+            },
+            {
+                nome: 'Maria Santos',
+                email: 'maria@gmail.com',
+                empresa: 'Pequena Lda',
+                website: '',
+                telefone: ''
+            },
+            {
+                nome: 'Pedro Costa',
+                email: 'pedro@digitalagency.pt',
+                empresa: 'Digital Agency',
+                website: 'https://digitalagency.pt',
+                telefone: '+351 918 765 432'
+            }
+        ];
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const lead = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                empresa: document.getElementById('empresa').value,
+                website: document.getElementById('website').value,
+                telefone: document.getElementById('telefone').value
+            };
+
+            // Show loading
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('result').classList.remove('show');
+
+            // Simulate AI processing
+            setTimeout(() => {
+                const score = calculateScore(lead);
+                const reason = generateReason(lead, score);
+
+                // Hide loading
+                document.getElementById('loading').classList.remove('show');
+
+                // Show results
+                document.getElementById('score').innerHTML = `${score}<span class="score-label">/10</span>`;
+                document.getElementById('reasonText').textContent = reason;
+                document.getElementById('result').classList.add('show');
+
+                // Show email notification if hot lead
+                if (score >= 7) {
+                    document.getElementById('emailNotif').style.display = 'block';
+                } else {
+                    document.getElementById('emailNotif').style.display = 'none';
+                }
+
+                // Show notification
+                const notif = document.getElementById('notification');
+                notif.classList.add('show');
+                setTimeout(() => {
+                    notif.classList.remove('show');
+                }, 3000);
+
+            }, 2000);
+        });
+
+        function calculateScore(lead) {
+            let score = 3; // Base score
+
+            // Email corporativo
+            if (lead.email && !lead.email.includes('gmail') && !lead.email.includes('hotmail') && !lead.email.includes('outlook')) {
+                score += 2;
+            }
+
+            // Website
+            if (lead.website && lead.website.length > 0) {
+                score += 2;
+            }
+
+            // Telefone
+            if (lead.telefone && lead.telefone.length > 0) {
+                score += 1;
+            }
+
+            // Nome da empresa sugere tamanho/profissionalismo
+            if (lead.empresa.toLowerCase().includes('tech') || 
+                lead.empresa.toLowerCase().includes('digital') ||
+                lead.empresa.toLowerCase().includes('software') ||
+                lead.empresa.toLowerCase().includes('startup')) {
+                score += 2;
+            }
+
+            return Math.min(score, 10);
+        }
+
+        function generateReason(lead, score) {
+            const reasons = [];
+
+            if (score >= 8) {
+                reasons.push('Empresa tech profissional');
+            }
+            if (!lead.email.includes('gmail') && !lead.email.includes('hotmail')) {
+                reasons.push('email corporativo');
+            }
+            if (lead.website) {
+                reasons.push('website profissional');
+            }
+            if (lead.telefone) {
+                reasons.push('contacto telefónico fornecido');
+            }
+            if (score >= 7) {
+                reasons.push('alta probabilidade de conversão');
+            }
+
+            if (reasons.length === 0) {
+                return 'Empresa pequena ou informação limitada. Requer mais validação antes de contacto.';
+            }
+
+            return 'Lead qualificado: ' + reasons.join(', ') + '.';
+        }
+
+        // Quick fill buttons
+        console.log('💡 Dica: Experimente estes leads de exemplo:', sampleLeads);
+    </script>
+</body>
+</html>
