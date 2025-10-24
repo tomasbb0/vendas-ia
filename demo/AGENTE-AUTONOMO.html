@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendasIA 2.0 - Agente SDR Autónomo 🤖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero .tagline {
+            font-size: 1.8em;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .mega-alert {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 20px 60px rgba(255,107,107,0.3);
+        }
+
+        .mega-alert h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .mega-alert p {
+            font-size: 1.3em;
+            line-height: 1.8;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .old-way, .new-way {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .old-way {
+            opacity: 0.7;
+        }
+
+        .old-way h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .new-way h2 {
+            color: #44ff44;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .tech-stack h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .stack-layer {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .stack-layer h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .stack-layer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .stack-layer li {
+            padding: 10px 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .stack-layer li:before {
+            content: "🔹 ";
+            margin-right: 10px;
+        }
+
+        .workflow {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .workflow h2 {
+            color: #667eea;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 30px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .workflow-step:after {
+            content: "⬇️";
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+        }
+
+        .workflow-step:last-child:after {
+            display: none;
+        }
+
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 25px;
+        }
+
+        .step-content h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 0.95em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .highlight-box h2 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box p {
+            font-size: 1.3em;
+            line-height: 1.8;
+        }
+
+        .pricing {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .pricing h2 {
+            color: #667eea;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .price-card.featured {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .price-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .price-card .price {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price-card ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+        }
+
+        .price-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .price-card.featured li {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .workflow-step {
+                flex-direction: column;
+            }
+            
+            .step-num {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>🤖 VendasIA 2.0</h1>
+            <p class="tagline">O Primeiro Agente SDR Totalmente Autónomo em Português</p>
+            <p style="color: #999; font-size: 1.2em;">
+                Não precisa de formulários. Não precisa de leads.<br>
+                Encontra, contacta, qualifica e fecha - SOZINHO.
+            </p>
+        </div>
+
+        <!-- Mega Alert -->
+        <div class="mega-alert">
+            <h2>🔥 ISTO É O PRODUTO CERTO!</h2>
+            <p>
+                <strong>Esquece o formulário!</strong> Vais construir um agente que:<br><br>
+                ✅ Usa APIs (Apollo.io, LinkedIn, Hunter.io) para ENCONTRAR leads<br>
+                ✅ Usa GPT-4 + embeddings para PESQUISAR cada empresa<br>
+                ✅ Usa agentes AI para ESCREVER mensagens ultra-personalizadas<br>
+                ✅ Usa automação para ENVIAR via LinkedIn/Email<br>
+                ✅ Usa CRM APIs (Pipedrive/HubSpot) para GERIR pipeline<br>
+                ✅ Usa AI para RESPONDER a conversas e QUALIFICAR<br><br>
+                <strong>É um SDR de €30k/ano por €299/mês! 🚀</strong>
+            </p>
+        </div>
+
+        <!-- Comparison -->
+        <div class="comparison">
+            <div class="old-way">
+                <h2>❌ Ideia Antiga (Formulário)</h2>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px 0; color: #666;">📝 Cliente preenche formulário</li>
+                    <li style="padding: 10px 0; color: #666;">🤖 IA qualifica</li>
+                    <li style="padding: 10px 0; color: #666;">📧 Envia notificação</li>
+                    <li style="padding: 10px 0; color: #666;">😴 TU fazes tudo depois</li>
+                </ul>
+                <p style="margin-top: 20px; color: #ff6b6b; font-weight: bold;">
+                    Problema: Ainda dependes de tráfego + follow-up manual
+                </p>
+            </div>
+
+            <div class="new-way">
+                <h2>✅ Ideia Nova (Agente Autónomo)</h2>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px 0; color: #333;">🔍 IA procura empresas sozinha</li>
+                    <li style="padding: 10px 0; color: #333;">🧠 IA pesquisa cada empresa (web scraping)</li>
+                    <li style="padding: 10px 0; color: #333;">✍️ IA escreve mensagem personalizada</li>
+                    <li style="padding: 10px 0; color: #333;">📤 IA envia LinkedIn/Email</li>
+                    <li style="padding: 10px 0; color: #333;">💬 IA responde e qualifica</li>
+                    <li style="padding: 10px 0; color: #333;">📊 IA atualiza CRM sozinha</li>
+                </ul>
+                <p style="margin-top: 20px; color: #44ff44; font-weight: bold;">
+                    Solução: 100% autónomo. Sales person só fecha!
+                </p>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">🔍</div>
+                <h3>Lead Discovery</h3>
+                <p>
+                    <strong>APIs:</strong> Apollo.io, Hunter.io, LinkedIn Sales Nav<br>
+                    <strong>IA:</strong> Filtra por critérios (setor, tamanho, tecnologias)<br>
+                    <strong>Output:</strong> 50-100 leads qualificados/dia
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">🧠</div>
+                <h3>Deep Research</h3>
+                <p>
+                    <strong>Web Scraping:</strong> Site, LinkedIn, notícias<br>
+                    <strong>Embeddings:</strong> Vetoriza info em Pinecone<br>
+                    <strong>IA:</strong> Cria perfil completo de cada lead
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">✍️</div>
+                <h3>Hyper-Personalization</h3>
+                <p>
+                    <strong>GPT-4:</strong> Escreve mensagem única por lead<br>
+                    <strong>Contexto:</strong> Referências específicas da empresa<br>
+                    <strong>Testes A/B:</strong> Melhora com feedback
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">📤</div>
+                <h3>Multi-Channel Outreach</h3>
+                <p>
+                    <strong>LinkedIn:</strong> Via API (Phantombuster/Waalaxy)<br>
+                    <strong>Email:</strong> SMTP com warm-up (Instantly.ai)<br>
+                    <strong>Timing:</strong> IA otimiza horários de envio
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">💬</div>
+                <h3>Conversational AI</h3>
+                <p>
+                    <strong>Responde:</strong> Perguntas básicas automaticamente<br>
+                    <strong>Qualifica:</strong> Score BANT (Budget, Authority, Need, Timing)<br>
+                    <strong>Escalation:</strong> Passa ao humano quando necessário
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">📊</div>
+                <h3>CRM Integration</h3>
+                <p>
+                    <strong>APIs:</strong> Pipedrive, HubSpot, Salesforce<br>
+                    <strong>Auto-update:</strong> Cria deals, atualiza stages<br>
+                    <strong>Reporting:</strong> Dashboard em tempo real
+                </p>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="tech-stack">
+            <h2>🛠️ Stack Tecnológica Completa</h2>
+
+            <div class="stack-layer">
+                <h3>Layer 1: Orquestração (Brain)</h3>
+                <ul>
+                    <li><strong>LangGraph</strong> - Multi-agent orchestration (open-source)</li>
+                    <li><strong>CrewAI</strong> - Coordenação de agentes especializados</li>
+                    <li><strong>Temporal.io</strong> - Workflow durável e retry automático</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Layer 2: Inteligência (AI)</h3>
+                <ul>
+                    <li><strong>OpenAI GPT-4</strong> - Escrita, análise, decisões</li>
+                    <li><strong>Anthropic Claude</strong> - Research profundo</li>
+                    <li><strong>Pinecone</strong> - Vector DB para embeddings</li>
+                    <li><strong>LangChain</strong> - RAG e prompt engineering</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Layer 3: Data Sources (APIs)</h3>
+                <ul>
+                    <li><strong>Apollo.io</strong> - Database de 270M contactos B2B</li>
+                    <li><strong>Hunter.io</strong> - Email finder + verification</li>
+                    <li><strong>Clearbit</strong> - Company enrichment</li>
+                    <li><strong>Firecrawl</strong> - Web scraping inteligente</li>
+                    <li><strong>SerpAPI</strong> - Google search para research</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Layer 4: Outreach (Execution)</h3>
+                <ul>
+                    <li><strong>Phantombuster</strong> - LinkedIn automation</li>
+                    <li><strong>Instantly.ai</strong> - Email sending + warm-up</li>
+                    <li><strong>Lemlist</strong> - Sequências multi-canal</li>
+                    <li><strong>Reply.io</strong> - Alternative para email sequences</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Layer 5: CRM (Pipeline)</h3>
+                <ul>
+                    <li><strong>Pipedrive API</strong> - CRM principal (mais fácil)</li>
+                    <li><strong>HubSpot API</strong> - Alternative enterprise</li>
+                    <li><strong>Zapier/Make</strong> - Conectores adicionais</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Layer 6: Backend (Code)</h3>
+                <ul>
+                    <li><strong>Python/FastAPI</strong> - Backend principal</li>
+                    <li><strong>PostgreSQL</strong> - Database relacional</li>
+                    <li><strong>Redis</strong> - Cache e queues</li>
+                    <li><strong>Celery</strong> - Task queue assíncrona</li>
+                    <li><strong>Railway/Render</strong> - Hosting</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Layer 7: Frontend (Dashboard)</h3>
+                <ul>
+                    <li><strong>Next.js 14</strong> - React framework</li>
+                    <li><strong>Tailwind CSS</strong> - Styling</li>
+                    <li><strong>shadcn/ui</strong> - Component library</li>
+                    <li><strong>Vercel</strong> - Deploy</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Workflow -->
+        <div class="workflow">
+            <h2>🔄 Como o Agente Funciona (End-to-End)</h2>
+
+            <div class="workflow-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h3>Setup Inicial (Sales Person)</h3>
+                    <p>
+                        Sales person define: ICP (Ideal Customer Profile), setor, tamanho empresa, região, job titles alvo.<br>
+                        <strong>Exemplo:</strong> "SaaS B2B, 10-50 pessoas, Portugal, CEO/Sales Director"
+                    </p>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h3>Lead Discovery (Agente Autónomo)</h3>
+                    <p>
+                        <strong>Apollo.io API:</strong> Procura empresas que fazem match com ICP<br>
+                        <strong>Hunter.io API:</strong> Enriquece com emails verificados<br>
+                        <strong>Output:</strong> Lista de 100 leads qualificados
+                    </p>
+                    <div class="code-example">
+# Exemplo Apollo.io API
+import requests
+
+response = requests.post('https://api.apollo.io/v1/mixed_people/search', 
+    headers={'X-Api-Key': 'YOUR_KEY'},
+    json={
+        'person_titles': ['CEO', 'Sales Director'],
+        'organization_num_employees_ranges': ['11,20', '21,50'],
+        'organization_locations': ['Portugal'],
+        'q_organization_keyword_tags': ['SaaS', 'B2B']
+    }
+)
+
+leads = response.json()['people']  # 100 leads
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h3>Deep Research (Agente Research)</h3>
+                    <p>
+                        Para cada lead, o agente:<br>
+                        1. <strong>Scrapes</strong> website empresa (Firecrawl)<br>
+                        2. <strong>Analisa</strong> LinkedIn profile<br>
+                        3. <strong>Pesquisa</strong> notícias recentes (SerpAPI)<br>
+                        4. <strong>Cria embeddings</strong> e guarda em Pinecone<br>
+                        5. <strong>GPT-4 resume</strong> em 2-3 pain points específicos
+                    </p>
+                    <div class="code-example">
+# Exemplo Research Agent
+from langchain.agents import initialize_agent
+from langchain.tools import Tool
+
+tools = [
+    Tool(name="Web Scraper", func=firecrawl_scrape),
+    Tool(name="News Search", func=serp_search),
+    Tool(name="LinkedIn", func=linkedin_scrape)
+]
+
+agent = initialize_agent(tools, llm=gpt4, agent="structured-chat")
+
+research = agent.run(f"""
+Research {company_name}:
+1. What do they do?
+2. Recent news/funding?
+3. Likely pain points for sales automation?
+""")
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h3>Message Generation (Agente Writer)</h3>
+                    <p>
+                        GPT-4 escreve mensagem ÚNICA para cada lead baseado em:<br>
+                        • Research findings<br>
+                        • Recent company news<br>
+                        • Specific pain points<br>
+                        • Personalized hook (não genérico!)
+                    </p>
+                    <div class="code-example">
+# Exemplo Prompt
+prompt = f"""
+Escreve mensagem LinkedIn para:
+- Nome: {lead.name}
+- Cargo: {lead.title}
+- Empresa: {company.name}
+- Setor: {company.industry}
+
+Research:
+{research_summary}
+
+Pain points identificados:
+{pain_points}
+
+Regras:
+- Máximo 300 caracteres
+- Menciona algo ESPECÍFICO da empresa
+- Não uses "espero que esteja bem"
+- CTA claro mas soft
+- Português de Portugal
+"""
+
+message = gpt4.chat([{"role": "user", "content": prompt}])
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                    <h3>Multi-Channel Outreach (Agente Sender)</h3>
+                    <p>
+                        Envia via múltiplos canais com timing otimizado:<br>
+                        <strong>Dia 1:</strong> LinkedIn connection request<br>
+                        <strong>Dia 3:</strong> LinkedIn message (se aceitou)<br>
+                        <strong>Dia 5:</strong> Email (se não respondeu)<br>
+                        <strong>Dia 8:</strong> Email follow-up<br>
+                        <strong>Timing:</strong> Ter-Qui, 9-11h ou 14-16h (melhor response rate)
+                    </p>
+                    <div class="code-example">
+# Exemplo Sequência
+from celery import chain
+
+sequence = chain(
+    send_linkedin_connection.si(lead_id),
+    wait.si(days=2),
+    send_linkedin_message.si(lead_id),
+    wait.si(days=2),
+    send_email.si(lead_id, template="intro"),
+    wait.si(days=3),
+    send_email.si(lead_id, template="followup")
+)
+
+sequence.apply_async()
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-num">6</div>
+                <div class="step-content">
+                    <h3>Response Handling (Agente Conversational)</h3>
+                    <p>
+                        Quando lead responde:<br>
+                        1. <strong>IA analisa</strong> sentimento e intenção<br>
+                        2. <strong>Se positivo:</strong> Responde, qualifica (BANT), propõe call<br>
+                        3. <strong>Se neutro:</strong> Nurture com conteúdo relevante<br>
+                        4. <strong>Se negativo:</strong> Marca "Not Interested", para outreach<br>
+                        5. <strong>Se hot lead:</strong> Notifica sales person IMEDIATAMENTE
+                    </p>
+                    <div class="code-example">
+# Exemplo Response Handler
+def handle_response(lead_id, message):
+    # Classify sentiment
+    sentiment = gpt4.classify(message, ["positive", "neutral", "negative"])
+    
+    if sentiment == "positive":
+        # Qualify with BANT
+        bant_score = gpt4.extract_bant(message)
+        
+        if bant_score >= 7:
+            # HOT LEAD!
+            notify_sales_person(lead_id, urgency="HIGH")
+            propose_meeting(lead_id)
+        else:
+            # Continue nurturing
+            send_nurture_content(lead_id)
+    
+    # Update CRM
+    pipedrive.update_deal(lead_id, stage=get_stage(sentiment))
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-num">7</div>
+                <div class="step-content">
+                    <h3>CRM Sync & Reporting (Agente Manager)</h3>
+                    <p>
+                        Tudo automaticamente atualizado em Pipedrive:<br>
+                        • Lead criado → Deal criado<br>
+                        • Mensagem enviada → Activity logged<br>
+                        • Resposta recebida → Stage atualizado<br>
+                        • Call agendada → Calendar event criado<br>
+                        <strong>Dashboard:</strong> Métricas em tempo real (sent, opened, replied, meetings)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="highlight-box">
+            <h2>🎯 O Sales Person Só Faz:</h2>
+            <p style="font-size: 1.5em; margin: 20px 0;">
+                <strong>1.</strong> Define ICP (5 minutos)<br>
+                <strong>2.</strong> Revisa dashboard (10 min/dia)<br>
+                <strong>3.</strong> Atende calls agendadas pela IA<br>
+                <strong>4.</strong> FECHA negócios 🎉
+            </p>
+            <p style="font-size: 1.2em; opacity: 0.9;">
+                A IA faz todo o resto: prospecção, research, outreach, qualificação, follow-ups, CRM.
+            </p>
+        </div>
+
+        <!-- Pricing -->
+        <div class="pricing">
+            <h2>💰 Modelo de Preços (SaaS)</h2>
+            
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Starter</h3>
+                    <div class="price">€199<span style="font-size: 0.4em;">/mês</span></div>
+                    <ul>
+                        <li>✅ 100 leads/mês</li>
+                        <li>✅ LinkedIn + Email</li>
+                        <li>✅ Basic personalization</li>
+                        <li>✅ CRM sync</li>
+                        <li>✅ Dashboard</li>
+                        <li>❌ Deep research</li>
+                        <li>❌ AI responses</li>
+                    </ul>
+                </div>
+
+                <div class="price-card featured">
+                    <h3>Professional ⭐</h3>
+                    <div class="price">€499<span style="font-size: 0.4em;">/mês</span></div>
+                    <ul>
+                        <li>✅ 500 leads/mês</li>
+                        <li>✅ Multi-channel sequences</li>
+                        <li>✅ Deep research + embeddings</li>
+                        <li>✅ Hyper-personalization</li>
+                        <li>✅ AI conversation handling</li>
+                        <li>✅ Advanced CRM integration</li>
+                        <li>✅ Priority support</li>
+                    </ul>
+                </div>
+
+                <div class="price-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">€999<span style="font-size: 0.4em;">/mês</span></div>
+                    <ul>
+                        <li>✅ Unlimited leads</li>
+                        <li>✅ Multiple ICPs</li>
+                        <li>✅ Custom AI training</li>
+                        <li>✅ Dedicated account manager</li>
+                        <li>✅ White-label option</li>
+                        <li>✅ API access</li>
+                        <li>✅ Custom integrations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center; color: #666;">
+                <p style="font-size: 1.2em;">
+                    <strong>ROI Médio:</strong> Cada cliente fecha 2-3 deals/mês extra = €5k-15k revenue<br>
+                    <strong>Payback:</strong> 2-5 dias
+                </p>
+            </div>
+        </div>
+
+        <!-- Implementation Plan -->
+        <div class="tech-stack">
+            <h2>🚀 Plano de Implementação (8 Semanas)</h2>
+
+            <div class="stack-layer">
+                <h3>Semanas 1-2: MVP Core (Manual + Semi-Auto)</h3>
+                <ul>
+                    <li>Apollo.io API integration</li>
+                    <li>GPT-4 message generation (prompts manuais)</li>
+                    <li>Instantly.ai para email sending</li>
+                    <li>Google Sheets como CRM temporário</li>
+                    <li><strong>Output:</strong> Sistema que tu controlas mas IA ajuda</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Semanas 3-4: Automation Layer</h3>
+                <ul>
+                    <li>LangChain agents para research</li>
+                    <li>Firecrawl web scraping</li>
+                    <li>Sequências automáticas (Celery)</li>
+                    <li>Pipedrive integration</li>
+                    <li><strong>Output:</strong> 70% autónomo</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Semanas 5-6: Intelligence Layer</h3>
+                <ul>
+                    <li>Pinecone embeddings</li>
+                    <li>RAG para contexto histórico</li>
+                    <li>Response classification</li>
+                    <li>BANT auto-scoring</li>
+                    <li><strong>Output:</strong> 90% autónomo</li>
+                </ul>
+            </div>
+
+            <div class="stack-layer">
+                <h3>Semanas 7-8: Dashboard + Polish</h3>
+                <ul>
+                    <li>Next.js dashboard bonito</li>
+                    <li>Real-time metrics</li>
+                    <li>A/B testing framework</li>
+                    <li>Performance optimization</li>
+                    <li><strong>Output:</strong> Produto vendável!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="hero">
+            <h1 style="font-size: 2.5em;">💪 Isto é 100x Melhor!</h1>
+            <p style="font-size: 1.3em; color: #666; margin: 30px 0;">
+                Não é só "IA qualifica leads"<br>
+                É <strong>"IA É o SDR completo"</strong> 🤖
+            </p>
+            
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 20px; margin: 30px 0; text-align: left;">
+                <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8em;">📋 Próximos Passos AGORA:</h3>
+                <ol style="font-size: 1.2em; line-height: 2; color: #333;">
+                    <li>Vou criar <strong>architecture diagram</strong> completo</li>
+                    <li>Vou fazer <strong>código starter</strong> (Python + LangGraph)</li>
+                    <li>Vou setup <strong>primeira integração</strong> (Apollo.io)</li>
+                    <li>Vou criar <strong>primeiro agente</strong> (Lead Finder)</li>
+                    <li>Vamos <strong>testar com 10 leads</strong> reais</li>
+                </ol>
+            </div>
+
+            <p style="font-size: 1.5em; color: #667eea; margin-top: 40px; font-weight: bold;">
+                Pronto para construir isto? 🚀
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card, .workflow-step, .stack-layer');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '0';
+                            entry.target.style.transform = 'translateY(30px)';
+                            entry.target.style.transition = 'all 0.6s ease';
+                            setTimeout(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }, 50);
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => observer.observe(card));
+        });
+    </script>
+</body>
+</html>

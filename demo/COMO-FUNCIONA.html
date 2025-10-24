@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendasIA - Como Funciona PASSO-A-PASSO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .alert h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .column {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .column h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .step-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+            padding-right: 100px;
+        }
+
+        .step-card h3 {
+            color: #764ba2;
+            margin: 25px 0 15px 0;
+            font-size: 1.5em;
+        }
+
+        .sub-step {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .sub-step h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .visual-flow {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            gap: 20px;
+        }
+
+        .flow-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            flex-shrink: 0;
+        }
+
+        .flow-arrow {
+            font-size: 2em;
+            color: #764ba2;
+        }
+
+        .flow-content {
+            flex: 1;
+        }
+
+        .flow-content h4 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .checklist {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #667eea;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .warning {
+            background: #ffe6e6;
+            border-left: 5px solid #ff4444;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background: #e6ffe6;
+            border-left: 5px solid #44ff44;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .screenshot-placeholder {
+            background: #f0f0f0;
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            padding: 60px 20px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            margin: 20px 0;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+
+        strong {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>🎯 VendasIA - Como Funciona</h1>
+            <p>Guia Visual Completo: Da Confusão ao MVP em 2 Horas</p>
+            
+            <div class="alert">
+                <h3>⚠️ IMPORTANTE: Isto É Um SIMULADOR!</h3>
+                <p><strong>O HTML que viste (interactive-demo.html) NÃO é o produto real!</strong></p>
+                <p>É apenas uma DEMONSTRAÇÃO para mostrares a clientes e entenderes como vai funcionar.</p>
+                <p><strong>Agora vou-te mostrar como construir o MVP REAL com Make.com!</strong></p>
+            </div>
+        </div>
+
+        <!-- Entendimento -->
+        <div class="two-columns">
+            <div class="column">
+                <h2>❌ O Que NÃO É</h2>
+                <ul>
+                    <li><strong>interactive-demo.html</strong> - É só um simulador bonito</li>
+                    <li>Não usa IA de verdade</li>
+                    <li>Não guarda dados</li>
+                    <li>Não envia emails</li>
+                    <li>É só para DEMONSTRAR a clientes</li>
+                </ul>
+            </div>
+            
+            <div class="column">
+                <h2>✅ O Que TU Vais Construir</h2>
+                <ul>
+                    <li><strong>Sistema real</strong> com IA GPT-4</li>
+                    <li>Formulário em Carrd.co</li>
+                    <li>Automação Make.com</li>
+                    <li>Base de dados Google Sheets</li>
+                    <li>Emails automáticos Gmail</li>
+                    <li>FUNCIONA 24/7 sem ti!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Visual Flow -->
+        <div class="step-card">
+            <div class="step-number">📊</div>
+            <h2>Como o VendasIA Funciona (Sistema Real)</h2>
+            
+            <div class="visual-flow">
+                <div class="flow-step">
+                    <div class="flow-icon">📝</div>
+                    <div class="flow-content">
+                        <h4>1. Cliente Preenche Formulário</h4>
+                        <p>No teu site Carrd.co: Nome, Email, Empresa, Website, Telefone</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="flow-arrow">⬇️</div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-icon">🔔</div>
+                    <div class="flow-content">
+                        <h4>2. Formulário Envia para Make.com</h4>
+                        <p>Via Webhook (link especial) - instantâneo!</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="flow-arrow">⬇️</div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-icon">🤖</div>
+                    <div class="flow-content">
+                        <h4>3. IA Analisa o Lead</h4>
+                        <p>GPT-4 dá pontuação 1-10 e explica porquê</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="flow-arrow">⬇️</div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-icon">📊</div>
+                    <div class="flow-content">
+                        <h4>4. Guarda em Google Sheets</h4>
+                        <p>Linha nova com todos os dados + score IA</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <div class="flow-arrow">⬇️</div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-icon">📧</div>
+                    <div class="flow-content">
+                        <h4>5. Email Automático (se score ≥7)</h4>
+                        <p>Gmail envia-te notificação: "🔥 Lead quente!"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight">
+                ⏱️ Tudo isto acontece em 5 segundos, 24/7, sem ti fazer nada!
+            </div>
+        </div>
+
+        <!-- PASSO 1 -->
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h2>Criar Contas (30 minutos)</h2>
+            <p style="color: #666; font-size: 1.2em; margin-bottom: 30px;">
+                Vais precisar de 4 contas gratuitas. Vou guiar-te passo a passo!
+            </p>
+
+            <div class="sub-step">
+                <h4>1.1 Make.com (5 minutos) ✅</h4>
+                <ol>
+                    <li>Abre: <code>https://www.make.com/en/register</code></li>
+                    <li>Clica "Sign up with Google" (mais rápido)</li>
+                    <li>Confirma email</li>
+                    <li>Salta o tutorial (vamos fazer personalizado)</li>
+                </ol>
+                <div class="success">
+                    ✅ Acabaste! Deixa o Make.com aberto numa tab
+                </div>
+            </div>
+
+            <div class="sub-step">
+                <h4>1.2 OpenAI API (10 minutos) 🔑</h4>
+                <ol>
+                    <li>Abre: <code>https://platform.openai.com/signup</code></li>
+                    <li>Cria conta (usa o mesmo email)</li>
+                    <li>Vai a "Settings" → "Billing"</li>
+                    <li>Adiciona €5 de crédito (cartão/MB WAY)</li>
+                    <li>Vai a "API Keys"</li>
+                    <li>Clica "Create new secret key"</li>
+                    <li>Copia a chave: <code>sk-proj-...</code></li>
+                </ol>
+                <div class="warning">
+                    ⚠️ GUARDA ESTA CHAVE! Cola num ficheiro de texto. Não a podes ver de novo!
+                </div>
+                <div class="code-block">
+Exemplo de API Key:
+sk-proj-abc123XYZ...muito-longa...456def
+
+GUARDA ISTO NUM FICHEIRO: openai-key.txt
+                </div>
+            </div>
+
+            <div class="sub-step">
+                <h4>1.3 Google Sheets (10 minutos) 📊</h4>
+                <ol>
+                    <li>Abre: <code>https://sheets.google.com/create</code></li>
+                    <li>Nome da sheet: <strong>VendasIA-Leads</strong></li>
+                    <li>Na linha 1, escreve estas colunas:
+                        <ul>
+                            <li>A1: <code>Timestamp</code></li>
+                            <li>B1: <code>Nome</code></li>
+                            <li>C1: <code>Email</code></li>
+                            <li>D1: <code>Empresa</code></li>
+                            <li>E1: <code>Website</code></li>
+                            <li>F1: <code>Telefone</code></li>
+                            <li>G1: <code>IA_Score</code></li>
+                            <li>H1: <code>IA_Motivo</code></li>
+                        </ul>
+                    </li>
+                    <li>Seleciona linha 1, clica "Bold" (negrito)</li>
+                    <li>Clica "Share" → "Anyone with link can edit"</li>
+                    <li>Copia o URL da sheet</li>
+                </ol>
+                <div class="success">
+                    ✅ Sheet pronta! Guarda o URL também
+                </div>
+            </div>
+
+            <div class="sub-step">
+                <h4>1.4 Carrd.co (5 minutos) 🌐</h4>
+                <ol>
+                    <li>Abre: <code>https://carrd.co</code></li>
+                    <li>Clica "Get Started"</li>
+                    <li>Escolhe plano "Pro Lite" (€19/ano)</li>
+                    <li>NÃO construas o site ainda! (vamos fazer no passo 3)</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- PASSO 2 -->
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h2>Construir Automação Make.com (45 minutos)</h2>
+            <p style="color: #666; font-size: 1.2em; margin-bottom: 30px;">
+                Aqui é onde a MAGIA acontece! Vou mostrar EXATAMENTE o que clicar.
+            </p>
+
+            <div class="sub-step">
+                <h4>2.1 Criar Cenário (2 minutos)</h4>
+                <ol>
+                    <li>No Make.com, clica "Create a new scenario"</li>
+                    <li>Nome: <strong>VendasIA Lead Pipeline</strong></li>
+                    <li>Vais ver um ecrã branco com um <code>+</code></li>
+                </ol>
+            </div>
+
+            <div class="sub-step">
+                <h4>2.2 Módulo 1: Webhook (5 minutos) 🔔</h4>
+                <p><strong>O que faz:</strong> Recebe dados do formulário Carrd</p>
+                <ol>
+                    <li>Clica no <code>+</code></li>
+                    <li>Procura "Webhooks"</li>
+                    <li>Escolhe "Custom webhook"</li>
+                    <li>Clica "Add" para criar webhook novo</li>
+                    <li>Nome: <strong>VendasIA Form</strong></li>
+                    <li>Clica "Save"</li>
+                    <li><strong>COPIA O URL</strong> que aparece (tipo: https://hook.eu2.make.com/abc123...)</li>
+                    <li>Guarda este URL! Vais precisar no Carrd</li>
+                    <li>Clica "OK"</li>
+                </ol>
+                <div class="warning">
+                    ⚠️ GUARDA O WEBHOOK URL! Cola no openai-key.txt
+                </div>
+            </div>
+
+            <div class="sub-step">
+                <h4>2.3 Módulo 2: OpenAI (20 minutos) 🤖</h4>
+                <p><strong>O que faz:</strong> IA analisa o lead e dá score 1-10</p>
+                <ol>
+                    <li>Clica no <code>+</code> depois do webhook</li>
+                    <li>Procura "OpenAI"</li>
+                    <li>Escolhe "Create a Chat Completion"</li>
+                    <li>Clica "Add" para criar conexão</li>
+                    <li>Cola a API Key que guardaste no passo 1.2</li>
+                    <li>Nome da conexão: <strong>VendasIA OpenAI</strong></li>
+                    <li>Clica "Save"</li>
+                    <li>Agora configura:
+                        <ul>
+                            <li><strong>Model:</strong> <code>gpt-4-turbo-preview</code></li>
+                            <li><strong>Role:</strong> <code>User</code></li>
+                            <li><strong>Message:</strong> (COLA ISTO 👇)</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <div class="code-block">
+Analisa este lead B2B português e dá uma pontuação de 1-10:
+
+Nome: {{1.nome}}
+Email: {{1.email}}
+Empresa: {{1.empresa}}
+Website: {{1.website}}
+Telefone: {{1.telefone}}
+
+Critérios:
+- Email corporativo (não @gmail): +2
+- Website profissional: +2
+- Telefone preenchido: +1
+- Nome de empresa relevante: +2
+- Completude dos dados: +3
+
+Responde APENAS em JSON:
+{
+  "score": 8,
+  "motivo": "Email corporativo, website, todos os campos preenchidos"
+}
+                </div>
+
+                <div class="warning">
+                    ⚠️ OS {{1.nome}}, {{1.email}} etc são IMPORTANTES!<br>
+                    Quando clicas no campo Message, vais ver estas opções aparecer.<br>
+                    Clica nelas para inserir os dados do webhook!
+                </div>
+            </div>
+
+            <div class="sub-step">
+                <h4>2.4 Módulo 3: Google Sheets (10 minutos) 📊</h4>
+                <p><strong>O que faz:</strong> Guarda tudo numa linha da sheet</p>
+                <ol>
+                    <li>Clica no <code>+</code> depois do OpenAI</li>
+                    <li>Procura "Google Sheets"</li>
+                    <li>Escolhe "Add a Row"</li>
+                    <li>Clica "Add" para conectar Google</li>
+                    <li>Permite acesso à tua conta Google</li>
+                    <li>Escolhe a sheet "VendasIA-Leads"</li>
+                    <li>Mapeia os campos (clica para escolher):
+                        <ul>
+                            <li>A (Timestamp): <code>{{now}}</code></li>
+                            <li>B (Nome): <code>{{1.nome}}</code></li>
+                            <li>C (Email): <code>{{1.email}}</code></li>
+                            <li>D (Empresa): <code>{{1.empresa}}</code></li>
+                            <li>E (Website): <code>{{1.website}}</code></li>
+                            <li>F (Telefone): <code>{{1.telefone}}</code></li>
+                            <li>G (IA_Score): <code>{{2.score}}</code></li>
+                            <li>H (IA_Motivo): <code>{{2.motivo}}</code></li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="sub-step">
+                <h4>2.5 Módulo 4: Gmail (5 minutos) 📧</h4>
+                <p><strong>O que faz:</strong> Envia-te email se lead for bom (score ≥7)</p>
+                <ol>
+                    <li>Clica no <code>+</code> depois do Google Sheets</li>
+                    <li>Procura "Gmail"</li>
+                    <li>Escolhe "Send an Email"</li>
+                    <li>Conecta Gmail</li>
+                    <li>Configura:
+                        <ul>
+                            <li><strong>To:</strong> teu-email@gmail.com</li>
+                            <li><strong>Subject:</strong> <code>🔥 Lead Quente: {{1.empresa}}</code></li>
+                            <li><strong>Content:</strong> (Cola isto 👇)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="code-block">
+Score IA: {{2.score}}/10
+
+Nome: {{1.nome}}
+Email: {{1.email}}
+Empresa: {{1.empresa}}
+Website: {{1.website}}
+Telefone: {{1.telefone}}
+
+Motivo: {{2.motivo}}
+
+⚡ Contacta JÁ!
+                </div>
+
+                <li>Clica na engrenagem do Gmail</li>
+                <li>Adiciona filtro: "Run this module only if:"</li>
+                <li>Condição: <code>{{2.score}}</code> <strong>≥</strong> <code>7</code></li>
+            </div>
+
+            <div class="sub-step">
+                <h4>2.6 Testar! (3 minutos) 🧪</h4>
+                <ol>
+                    <li>Clica "Run once" (canto inferior esquerdo)</li>
+                    <li>Vai ao webhook URL que copiaste</li>
+                    <li>Adiciona isto ao fim: <code>?nome=Test&email=test@empresa.pt&empresa=TesteCorp&website=teste.pt&telefone=912345678</code></li>
+                    <li>Cola no browser e dá Enter</li>
+                    <li>Volta ao Make → deves ver o workflow correr!</li>
+                    <li>Verifica a Google Sheet → linha nova!</li>
+                    <li>Verifica Gmail → email chegou!</li>
+                </ol>
+
+                <div class="success">
+                    ✅ FUNCIONA! Agora clica "Schedule" para ativar 24/7!
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSO 3 -->
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h2>Criar Landing Page Carrd (30 minutos)</h2>
+            <p style="color: #666; font-size: 1.2em; margin-bottom: 30px;">
+                Site bonito para capturar leads. Já tenho o HTML pronto!
+            </p>
+
+            <div class="sub-step">
+                <h4>3.1 Escolher Template</h4>
+                <ol>
+                    <li>No Carrd, clica "New Site"</li>
+                    <li>Escolhe template "Form" ou "Landing"</li>
+                    <li>Clica "Choose"</li>
+                </ol>
+            </div>
+
+            <div class="sub-step">
+                <h4>3.2 Editar Conteúdo</h4>
+                <ol>
+                    <li>Clica no título → muda para: <strong>"VendasIA - O Seu Estagiário de Vendas IA"</strong></li>
+                    <li>Subtítulo: <strong>"Qualificação automática de leads B2B em português"</strong></li>
+                    <li>Adiciona 3 benefícios:
+                        <ul>
+                            <li>⚡ Economiza 20-40h por mês</li>
+                            <li>🤖 IA analisa cada lead em 30 segundos</li>
+                            <li>💰 ROI de 500%+ garantido</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="sub-step">
+                <h4>3.3 Configurar Formulário (IMPORTANTE!)</h4>
+                <ol>
+                    <li>Clica no formulário</li>
+                    <li>Adiciona campos:
+                        <ul>
+                            <li>Nome (name: <code>nome</code>)</li>
+                            <li>Email (name: <code>email</code>)</li>
+                            <li>Empresa (name: <code>empresa</code>)</li>
+                            <li>Website (name: <code>website</code>)</li>
+                            <li>Telefone (name: <code>telefone</code>)</li>
+                        </ul>
+                    </li>
+                    <li>Clica "Settings" do form</li>
+                    <li><strong>Method:</strong> POST</li>
+                    <li><strong>Action:</strong> COLA O WEBHOOK URL do Make.com!</li>
+                    <li>Botão: "Experimentar Grátis"</li>
+                </ol>
+
+                <div class="warning">
+                    ⚠️ O webhook URL é ESSENCIAL! Sem ele não funciona!
+                </div>
+            </div>
+
+            <div class="sub-step">
+                <h4>3.4 Publicar</h4>
+                <ol>
+                    <li>Clica "Publish" (canto superior direito)</li>
+                    <li>URL: <code>vendas-ia.carrd.co</code></li>
+                    <li>Clica "Publish Site"</li>
+                </ol>
+
+                <div class="success">
+                    ✅ SITE LIVE! Testa: preenche o form e vê se corre o Make workflow!
+                </div>
+            </div>
+        </div>
+
+        <!-- RESUMO FINAL -->
+        <div class="step-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white;">🎉 PARABÉNS! Tens o MVP Pronto!</h2>
+            
+            <h3 style="color: white; margin-top: 30px;">O Que Acabaste de Construir:</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox" style="background: #44ff44;"></div>
+                    <div>✅ Sistema de automação Make.com 24/7</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" style="background: #44ff44;"></div>
+                    <div>✅ IA GPT-4 a qualificar leads automaticamente</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" style="background: #44ff44;"></div>
+                    <div>✅ Base de dados Google Sheets</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" style="background: #44ff44;"></div>
+                    <div>✅ Notificações Gmail para leads quentes</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" style="background: #44ff44;"></div>
+                    <div>✅ Landing page profissional</div>
+                </div>
+            </div>
+
+            <h3 style="color: white; margin-top: 40px;">📊 Como Vou Te Ajudar Agora:</h3>
+            <div style="background: rgba(255,255,255,0.2); padding: 30px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-size: 1.2em; margin-bottom: 15px;"><strong>Estou aqui para:</strong></p>
+                <ul style="font-size: 1.1em; line-height: 2;">
+                    <li>✅ Responder QUALQUER dúvida durante o setup</li>
+                    <li>✅ Debugar se algo não funcionar</li>
+                    <li>✅ Otimizar o prompt da IA</li>
+                    <li>✅ Melhorar o texto do Carrd</li>
+                    <li>✅ Criar templates de LinkedIn</li>
+                    <li>✅ Ajudar-te a fechar o primeiro cliente</li>
+                </ul>
+            </div>
+
+            <h3 style="color: white; margin-top: 40px;">🚀 Próximos Passos (Domingo):</h3>
+            <div style="background: rgba(255,255,255,0.2); padding: 30px; border-radius: 15px; margin: 20px 0;">
+                <ol style="font-size: 1.2em; line-height: 2;">
+                    <li><strong>Encontrar 50 empresas</strong> portuguesas B2B (10-50 pessoas)</li>
+                    <li><strong>Enviar mensagens LinkedIn</strong> (uso os templates em /outreach)</li>
+                    <li><strong>Mostrar o interactive-demo.html</strong> aos interessados</li>
+                    <li><strong>Fechar primeiro cliente!</strong></li>
+                </ol>
+            </div>
+
+            <div style="background: white; color: #667eea; padding: 40px; border-radius: 20px; margin-top: 40px; text-align: center;">
+                <h2 style="color: #667eea; font-size: 2.5em;">💪 Estás a 48h do Primeiro Cliente!</h2>
+                <p style="color: #666; font-size: 1.3em; margin-top: 20px;">
+                    Qualquer dúvida, pergunta! Vou estar aqui a cada passo. 🚀
+                </p>
+            </div>
+        </div>
+
+        <!-- FAQ Rápido -->
+        <div class="step-card">
+            <h2>❓ Perguntas Rápidas</h2>
+            
+            <div class="sub-step">
+                <h4>P: O interactive-demo.html serve para quê então?</h4>
+                <p><strong>R:</strong> Para MOSTRARES a potenciais clientes! Quando enviares LinkedIn, podes dizer "olha este demo". É uma preview visual do produto.</p>
+            </div>
+
+            <div class="sub-step">
+                <h4>P: Quanto custa manter isto?</h4>
+                <p><strong>R:</strong> €3.58/mês (€2 OpenAI + €1.58 Carrd). Make.com e Google Sheets grátis!</p>
+            </div>
+
+            <div class="sub-step">
+                <h4>P: E se algo não funcionar?</h4>
+                <p><strong>R:</strong> PERGUNTA-ME! Manda screenshot, explica o erro, e eu debugo contigo!</p>
+            </div>
+
+            <div class="sub-step">
+                <h4>P: Quando começo a ganhar dinheiro?</h4>
+                <p><strong>R:</strong> Objetivo: primeiro cliente até sexta (1 Nov). €49-99/mês recorrente!</p>
+            </div>
+
+            <div class="sub-step">
+                <h4>P: Preciso saber programar?</h4>
+                <p><strong>R:</strong> NÃO! É tudo no-code. Clica, arrasta, cola. Segue o guia acima!</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Animação suave ao scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.step-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.6s ease';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => observer.observe(card));
+        });
+    </script>
+</body>
+</html>
