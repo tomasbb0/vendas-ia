@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 VendasIA - ROADMAP COMPLETO: Do Script Python até Plataforma SaaS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            margin: 20px 40px;
+            border-radius: 8px;
+        }
+
+        .warning-box h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .phase {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 3px solid #3b82f6;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .phase-number {
+            background: #3b82f6;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .phase-title h2 {
+            font-size: 1.8em;
+            color: #1e3a8a;
+            margin-bottom: 5px;
+        }
+
+        .phase-meta {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .badge.time {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge.cost {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge.difficulty {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .step-card {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #3b82f6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .step-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .step-card .what {
+            background: #eff6ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .step-card .why {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .step-card .how {
+            background: #d1fae5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .action-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .action-list li {
+            padding: 12px;
+            margin: 8px 0;
+            background: #f3f4f6;
+            border-radius: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .action-list li strong {
+            color: #1e3a8a;
+            min-width: 100px;
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 8px 5px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            font-size: 1.1em;
+        }
+
+        .button.secondary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .button.docs {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            font-size: 0.9em;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 15px 0;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .service-card .icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .service-card h4 {
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .service-card .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #10b981;
+            margin: 10px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #3b82f6;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 20px;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: #3b82f6;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #3b82f6;
+        }
+
+        .checklist {
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .checklist label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 6px;
+        }
+
+        .checklist label:hover {
+            background: #f3f4f6;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: #1e3a8a;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison-table tr:hover {
+            background: #f3f4f6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .current-state {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .future-state {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 VendasIA - ROADMAP COMPLETO</h1>
+            <p style="font-size: 1.3em; margin-top: 15px;">Do Script Python Local até Plataforma SaaS Completa</p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠️ SITUAÇÃO ATUAL - ONDE ESTÁS AGORA:</h3>
+            <p><strong>O que tens:</strong></p>
+            <ul style="margin: 10px 0 10px 25px;">
+                <li>✅ Script Python local (<code>process_leads.py</code>)</li>
+                <li>✅ Gemini API key (funciona)</li>
+                <li>✅ 10 mensagens de teste geradas</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>O que NÃO tens (ainda):</strong></p>
+            <ul style="margin: 10px 0 0 25px;">
+                <li>❌ Dashboard web (frontend)</li>
+                <li>❌ Base de dados (para guardar leads/mensagens)</li>
+                <li>❌ Hosting na cloud (para outros usarem)</li>
+                <li>❌ Stripe (para aceitar pagamentos)</li>
+                <li>❌ Fork de n8n/LangFlow</li>
+                <li>❌ APIs integradas (Apollo, Instantly)</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold; color: #92400e;">
+                👉 Este HTML vai guiar-te PASSO A PASSO para teres TUDO isto funcionando!
+            </p>
+        </div>
+
+        <div class="content">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
+                <div class="current-state">
+                    <h2 style="margin-bottom: 15px;">📍 AGORA (Manual)</h2>
+                    <ul style="list-style: none; text-align: left;">
+                        <li>🐍 Script Python local</li>
+                        <li>📝 Scraping manual LinkedIn</li>
+                        <li>💬 Copiar/colar mensagens</li>
+                        <li>👤 Apenas TU podes usar</li>
+                        <li>💰 €0 de revenue</li>
+                    </ul>
+                </div>
+
+                <div class="future-state">
+                    <h2 style="margin-bottom: 15px;">🎯 OBJETIVO (Automatizado)</h2>
+                    <ul style="list-style: none; text-align: left;">
+                        <li>🌐 Dashboard web completo</li>
+                        <li>🤖 Scraping automatizado</li>
+                        <li>📧 Envio automático</li>
+                        <li>👥 Clientes pagam €299/mês</li>
+                        <li>💰 €3k-25k MRR</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FASE 0: MVP IMEDIATO -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">0</div>
+                    <div class="phase-title">
+                        <h2>MVP IMEDIATO - Valida COM CLIENTES (SEM código extra)</h2>
+                        <div class="phase-meta">
+                            <span class="badge time">⏱️ Este fim-de-semana</span>
+                            <span class="badge cost">💰 €0</span>
+                            <span class="badge difficulty">🟢 Fácil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>🎯 OBJETIVO: Conseguir 1 cliente ANTES de construir plataforma</h3>
+                    <p>Usa o que já tens (script Python) para validar que alguém PAGA por isto!</p>
+                </div>
+
+                <div class="step-card">
+                    <h3>Passo 0.1: Vende o SERVIÇO (não a plataforma)</h3>
+                    <div class="what">
+                        <strong>📋 O QUE FAZER:</strong>
+                        <p>Vende "Eu faço 50 mensagens LinkedIn personalizadas por semana para ti"</p>
+                    </div>
+                    <div class="why">
+                        <strong>💡 PORQUÊ:</strong>
+                        <p>Cliente não quer plataforma, quer RESULTS! Tu fazes manualmente, eles pagam €99-299/mês.</p>
+                    </div>
+                    <div class="how">
+                        <strong>✅ COMO:</strong>
+                        <ul class="action-list">
+                            <li><strong>Dia 1:</strong> Scrape 50 empresas LinkedIn (manual)</li>
+                            <li><strong>Dia 2:</strong> Run <code>python3 process_leads.py</code> → gera 50 mensagens</li>
+                            <li><strong>Dia 3:</strong> Envia 20 mensagens LinkedIn do CLIENTE (pedes acesso ou ele envia)</li>
+                            <li><strong>Semana 2:</strong> Track responses, agenda demos</li>
+                            <li><strong>Semana 3:</strong> Cliente RENOVA → tens €99-299 MRR!</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.linkedin.com/search/results/people/?keywords=CEO%20SaaS%20Portugal" target="_blank" class="button primary">
+                        🚀 Começar Scraping Agora
+                    </a>
+                </div>
+
+                <div class="success-box">
+                    <h3>✅ QUANDO PASSAS À FASE 1:</h3>
+                    <p>Quando tiveres <strong>1-3 clientes pagando €99-299/mês</strong> e estares a fazer MANUALMENTE.</p>
+                    <p style="margin-top: 10px;">Só ENTÃO construis plataforma para automatizar!</p>
+                </div>
+            </div>
+
+            <!-- FASE 1: INFRAESTRUTURA BASE -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">1</div>
+                    <div class="phase-title">
+                        <h2>Infraestrutura Base - Cloud & Database</h2>
+                        <div class="phase-meta">
+                            <span class="badge time">⏱️ 2-3 horas</span>
+                            <span class="badge cost">💰 €0-25/mês</span>
+                            <span class="badge difficulty">🟡 Médio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>1.1: Supabase - Base de Dados PostgreSQL</h3>
+                    <div class="what">
+                        <strong>📋 O QUE É:</strong>
+                        <p>Base de dados para guardar: leads, mensagens geradas, clientes, histórico</p>
+                    </div>
+                    <div class="why">
+                        <strong>💡 PORQUÊ SUPABASE:</strong>
+                        <ul style="margin-left: 20px;">
+                            <li>Free tier generoso (500MB database, 50K users)</li>
+                            <li>REST API automática (não precisas criar backend)</li>
+                            <li>Auth built-in (login de clientes)</li>
+                            <li>Real-time subscriptions</li>
+                        </ul>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS EXATOS:</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Abre <a href="https://supabase.com" target="_blank">supabase.com</a></li>
+                            <li>Click "Start your project" → Login com GitHub</li>
+                            <li>Cria projeto: Nome "vendasia", Region "Europe West"</li>
+                            <li>Espera 2min (provisioning)</li>
+                            <li>Vai a "Table Editor" → Cria 3 tabelas:
+                                <ul>
+                                    <li><code>leads</code> - name, company, title, linkedin_url, email, fit_score</li>
+                                    <li><code>messages</code> - lead_id, message_text, sent_date, response_status</li>
+                                    <li><code>customers</code> - name, email, plan, mrr, status</li>
+                                </ul>
+                            </li>
+                            <li>Vai a "Settings" → "API" → Copia:
+                                <ul>
+                                    <li>URL: <code>https://xxx.supabase.co</code></li>
+                                    <li>anon key: <code>eyJh...</code></li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <a href="https://supabase.com" target="_blank" class="button primary">
+                        🗄️ Criar Conta Supabase (FREE)
+                    </a>
+                    <a href="https://supabase.com/docs/guides/getting-started" target="_blank" class="button docs">
+                        📚 Ver Tutorial Supabase
+                    </a>
+                    <div class="checklist">
+                        <label>
+                            <input type="checkbox" id="supabase-account">
+                            Conta Supabase criada
+                        </label>
+                        <label>
+                            <input type="checkbox" id="supabase-project">
+                            Projeto "vendasia" criado
+                        </label>
+                        <label>
+                            <input type="checkbox" id="supabase-tables">
+                            3 tabelas criadas (leads, messages, customers)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="supabase-keys">
+                            API keys copiadas e guardadas
+                        </label>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>1.2: Railway - Hosting para Backend Python</h3>
+                    <div class="what">
+                        <strong>📋 O QUE É:</strong>
+                        <p>Servidor cloud para correr o teu <code>process_leads.py</code> 24/7</p>
+                    </div>
+                    <div class="why">
+                        <strong>💡 PORQUÊ RAILWAY:</strong>
+                        <ul style="margin-left: 20px;">
+                            <li>$5 free credits/mês (suficiente para MVP)</li>
+                            <li>Deploy direto do GitHub</li>
+                            <li>Scaling automático</li>
+                            <li>Logs & monitoring built-in</li>
+                        </ul>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS EXATOS:</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Abre <a href="https://railway.app" target="_blank">railway.app</a></li>
+                            <li>Click "Start a New Project" → Login com GitHub</li>
+                            <li>Escolhe "Deploy from GitHub repo"</li>
+                            <li>Conecta o teu repo <code>vendas-ia</code></li>
+                            <li>Railway detecta Python automaticamente</li>
+                            <li>Adiciona environment variables:
+                                <ul>
+                                    <li><code>GEMINI_API_KEY=AIza...</code></li>
+                                    <li><code>SUPABASE_URL=https://xxx.supabase.co</code></li>
+                                    <li><code>SUPABASE_KEY=eyJh...</code></li>
+                                </ul>
+                            </li>
+                            <li>Deploy! → Tens URL: <code>https://vendasia.up.railway.app</code></li>
+                        </ol>
+                    </div>
+                    <a href="https://railway.app" target="_blank" class="button primary">
+                        🚂 Criar Conta Railway (FREE)
+                    </a>
+                    <a href="https://docs.railway.app/getting-started" target="_blank" class="button docs">
+                        📚 Ver Tutorial Railway
+                    </a>
+                    <div class="checklist">
+                        <label>
+                            <input type="checkbox" id="railway-account">
+                            Conta Railway criada
+                        </label>
+                        <label>
+                            <input type="checkbox" id="railway-repo">
+                            Repo vendas-ia conectado
+                        </label>
+                        <label>
+                            <input type="checkbox" id="railway-env">
+                            Environment variables adicionadas
+                        </label>
+                        <label>
+                            <input type="checkbox" id="railway-deployed">
+                            Deploy bem-sucedido + URL ativa
+                        </label>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>1.3: Vercel - Hosting para Frontend (Dashboard)</h3>
+                    <div class="what">
+                        <strong>📋 O QUE É:</strong>
+                        <p>Hosting GRÁTIS para o dashboard web (onde clientes vão ver leads/mensagens)</p>
+                    </div>
+                    <div class="why">
+                        <strong>💡 PORQUÊ VERCEL:</strong>
+                        <ul style="margin-left: 20px;">
+                            <li>FREE para projetos pessoais/hobby</li>
+                            <li>Deploy automático do GitHub</li>
+                            <li>CDN global (rápido)</li>
+                            <li>HTTPS automático</li>
+                        </ul>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS EXATOS:</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Abre <a href="https://vercel.com" target="_blank">vercel.com</a></li>
+                            <li>Click "Sign Up" → Login com GitHub</li>
+                            <li>Click "New Project" → Import repo <code>vendas-ia</code></li>
+                            <li>Framework: Escolhe "Next.js" (vamos criar depois)</li>
+                            <li>Deploy! → Tens URL: <code>https://vendas-ia.vercel.app</code></li>
+                        </ol>
+                    </div>
+                    <a href="https://vercel.com" target="_blank" class="button primary">
+                        ▲ Criar Conta Vercel (FREE)
+                    </a>
+                    <a href="https://vercel.com/docs" target="_blank" class="button docs">
+                        📚 Ver Tutorial Vercel
+                    </a>
+                    <div class="checklist">
+                        <label>
+                            <input type="checkbox" id="vercel-account">
+                            Conta Vercel criada
+                        </label>
+                        <label>
+                            <input type="checkbox" id="vercel-project">
+                            Projeto importado do GitHub
+                        </label>
+                        <label>
+                            <input type="checkbox" id="vercel-url">
+                            URL ativa (vercel.app)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="success-box">
+                    <h3>✅ FASE 1 COMPLETA QUANDO:</h3>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Supabase database ativa com 3 tabelas</li>
+                        <li>Railway backend deployed e acessível</li>
+                        <li>Vercel frontend deployed (mesmo que vazio por agora)</li>
+                        <li>Todas as API keys guardadas num ficheiro <code>.env</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FASE 2: PAGAMENTOS -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">2</div>
+                    <div class="phase-title">
+                        <h2>Stripe - Sistema de Pagamentos</h2>
+                        <div class="phase-meta">
+                            <span class="badge time">⏱️ 1-2 horas</span>
+                            <span class="badge cost">💰 FREE (2.9% + €0.25 por transação)</span>
+                            <span class="badge difficulty">🟡 Médio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>2.1: Criar Conta Stripe</h3>
+                    <div class="what">
+                        <strong>📋 O QUE É:</strong>
+                        <p>Sistema para aceitar pagamentos com cartão (€99-499/mês dos clientes)</p>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS EXATOS:</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Abre <a href="https://stripe.com" target="_blank">stripe.com</a></li>
+                            <li>Click "Sign up" → Preenche dados empresa</li>
+                            <li>Vai a "Developers" → "API Keys"</li>
+                            <li>Copia:
+                                <ul>
+                                    <li>Publishable key: <code>pk_test_...</code></li>
+                                    <li>Secret key: <code>sk_test_...</code></li>
+                                </ul>
+                            </li>
+                            <li>Vai a "Products" → "Add Product"</li>
+                            <li>Cria 3 planos:
+                                <ul>
+                                    <li><strong>Beta</strong>: €99/mês - 50 leads/semana</li>
+                                    <li><strong>Pro</strong>: €299/mês - 200 leads/semana</li>
+                                    <li><strong>Scale</strong>: €499/mês - 500 leads/semana</li>
+                                </ul>
+                            </li>
+                            <li>Para cada plano, copia o <code>price_id</code></li>
+                        </ol>
+                    </div>
+                    <a href="https://stripe.com" target="_blank" class="button primary">
+                        💳 Criar Conta Stripe (FREE)
+                    </a>
+                    <a href="https://stripe.com/docs/billing/quickstart" target="_blank" class="button docs">
+                        📚 Stripe Billing Quickstart
+                    </a>
+                    <div class="checklist">
+                        <label>
+                            <input type="checkbox" id="stripe-account">
+                            Conta Stripe criada e verificada
+                        </label>
+                        <label>
+                            <input type="checkbox" id="stripe-keys">
+                            API keys copiadas
+                        </label>
+                        <label>
+                            <input type="checkbox" id="stripe-products">
+                            3 produtos criados (Beta, Pro, Scale)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="stripe-prices">
+                            Price IDs guardados
+                        </label>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 NOTA: Modo Test vs Production</h3>
+                    <p>Stripe tem 2 modos:</p>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Test Mode</strong>: Usa cartões de teste, €0 real transacionado - COMEÇA AQUI</li>
+                        <li><strong>Live Mode</strong>: Dinheiro real - só ativar quando tiveres primeiro cliente!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FASE 3: AUTOMAÇÃO COM N8N -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">3</div>
+                    <div class="phase-title">
+                        <h2>n8n - Workflow Automation (Fork & Deploy)</h2>
+                        <div class="phase-meta">
+                            <span class="badge time">⏱️ 3-4 horas</span>
+                            <span class="badge cost">💰 €20/mês (Railway)</span>
+                            <span class="badge difficulty">🔴 Avançado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>🎯 PORQUÊ n8n:</h3>
+                    <p>n8n = "Make.com open-source". Visual workflow builder para automatizar:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>LinkedIn scraping → Gemini processing → Email sending</li>
+                        <li>Webhook quando cliente paga → Criar conta Supabase</li>
+                        <li>Agendamento (ex: toda segunda 9am → scrape 50 leads)</li>
+                    </ul>
+                </div>
+
+                <div class="step-card">
+                    <h3>3.1: Fork n8n Repository</h3>
+                    <div class="what">
+                        <strong>📋 O QUE FAZER:</strong>
+                        <p>"Fork" = Copiar o código do n8n para o TEU GitHub, para poderes customizar</p>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS EXATOS:</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Abre <a href="https://github.com/n8n-io/n8n" target="_blank">github.com/n8n-io/n8n</a></li>
+                            <li>Click no botão "Fork" (canto superior direito)</li>
+                            <li>Escolhe a tua conta GitHub</li>
+                            <li>Espera 30 segundos → Tens agora <code>github.com/tomasbb0/n8n</code></li>
+                        </ol>
+                    </div>
+                    <a href="https://github.com/n8n-io/n8n" target="_blank" class="button primary">
+                        🔱 Fork n8n no GitHub
+                    </a>
+                    <a href="https://docs.n8n.io/hosting/" target="_blank" class="button docs">
+                        📚 n8n Self-Hosting Docs
+                    </a>
+                </div>
+
+                <div class="step-card">
+                    <h3>3.2: Deploy n8n no Railway</h3>
+                    <div class="what">
+                        <strong>📋 O QUE FAZER:</strong>
+                        <p>Colocar o n8n online, para poderes aceder via browser e criar workflows</p>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS EXATOS:</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Vai a <a href="https://railway.app" target="_blank">railway.app</a></li>
+                            <li>Click "New Project" → "Deploy from Template"</li>
+                            <li>Pesquisa "n8n" → Click no template oficial</li>
+                            <li>Ou usa direto: <a href="https://railway.app/template/n8n" target="_blank">railway.app/template/n8n</a></li>
+                            <li>Click "Deploy" → Railway cria tudo automaticamente</li>
+                            <li>Espera 2-3 minutos</li>
+                            <li>Clica no serviço → "Settings" → "Generate Domain"</li>
+                            <li>Tens URL: <code>https://n8n-vendasia.up.railway.app</code></li>
+                            <li>Abre URL → Cria conta admin (email + password)</li>
+                        </ol>
+                    </div>
+                    <a href="https://railway.app/template/n8n" target="_blank" class="button primary">
+                        🚂 Deploy n8n Template no Railway
+                    </a>
+                    <div class="checklist">
+                        <label>
+                            <input type="checkbox" id="n8n-deployed">
+                            n8n deployed no Railway
+                        </label>
+                        <label>
+                            <input type="checkbox" id="n8n-url">
+                            URL ativa e acessível
+                        </label>
+                        <label>
+                            <input type="checkbox" id="n8n-admin">
+                            Conta admin criada
+                        </label>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>3.3: Criar Primeiro Workflow - Lead Processor</h3>
+                    <div class="what">
+                        <strong>📋 O QUE CRIAR:</strong>
+                        <p>Workflow que pega em CSV de leads → Gemini API → Guarda mensagens no Supabase</p>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS EXATOS:</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Abre o teu n8n: <code>https://n8n-vendasia.up.railway.app</code></li>
+                            <li>Click "New Workflow"</li>
+                            <li>Adiciona nodes (drag & drop):
+                                <ol type="a">
+                                    <li><strong>Trigger</strong>: "Webhook" (para receber CSV)</li>
+                                    <li><strong>Parse</strong>: "Spreadsheet File" (ler CSV)</li>
+                                    <li><strong>Loop</strong>: "Split In Batches" (processar 1 por 1)</li>
+                                    <li><strong>AI</strong>: "HTTP Request" (chamar Gemini API)</li>
+                                    <li><strong>Save</strong>: "Supabase" node (guardar em DB)</li>
+                                </ol>
+                            </li>
+                            <li>Configura cada node com as tuas API keys</li>
+                            <li>Testa com 1 lead</li>
+                            <li>Se funcionar → "Save" e "Activate"</li>
+                        </ol>
+                    </div>
+                    <a href="https://docs.n8n.io/workflows/examples/" target="_blank" class="button docs">
+                        📚 n8n Workflow Examples
+                    </a>
+                </div>
+
+                <div class="success-box">
+                    <h3>✅ FASE 3 COMPLETA QUANDO:</h3>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>n8n online e acessível via URL</li>
+                        <li>1 workflow criado e funcional (test com 1 lead)</li>
+                        <li>Workflow conectado a: Gemini API + Supabase</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FASE 4: APIS EXTERNAS -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">4</div>
+                    <div class="phase-title">
+                        <h2>APIs de Automação - Apollo.io & Instantly.ai</h2>
+                        <div class="phase-meta">
+                            <span class="badge time">⏱️ 2 horas</span>
+                            <span class="badge cost">💰 €196/mês (só quando tiveres revenue!)</span>
+                            <span class="badge difficulty">🟡 Médio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠️ IMPORTANTE: SÓ FAZER ISTO QUANDO TIVERES 3+ CLIENTES!</h3>
+                    <p>Apollo (€99) + Instantly (€97) = €196/mês</p>
+                    <p>Só vale a pena quando tiveres €300-900/mês de revenue.</p>
+                    <p><strong>Até lá: scraping manual + envio manual!</strong></p>
+                </div>
+
+                <div class="step-card">
+                    <h3>4.1: Apollo.io - Lead Database & Scraping</h3>
+                    <div class="what">
+                        <strong>📋 O QUE É:</strong>
+                        <p>Database com 250M+ contacts B2B. API para scraping automático.</p>
+                    </div>
+                    <div class="why">
+                        <strong>💡 PORQUÊ (depois):</strong>
+                        <p>Em vez de scraping manual LinkedIn (3h), Apollo API scrape 50 leads em 30 segundos.</p>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS (quando tiveres €300+ MRR):</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Abre <a href="https://apollo.io" target="_blank">apollo.io</a></li>
+                            <li>Click "Start Free Trial" (14 dias)</li>
+                            <li>Upgrade para "Basic" plan (€99/mês, 12K créditos)</li>
+                            <li>Vai a "Settings" → "API" → Copia API key</li>
+                            <li>Adiciona ao n8n workflow (node "Apollo.io")</li>
+                            <li>Pesquisa: "CEO SaaS Portugal 10-50 employees" → 50 leads em 30s</li>
+                        </ol>
+                    </div>
+                    <a href="https://apollo.io" target="_blank" class="button secondary">
+                        🔍 Apollo.io (€99/mês - MAIS TARDE)
+                    </a>
+                    <a href="https://apolloio.github.io/apollo-api-docs/" target="_blank" class="button docs">
+                        📚 Apollo API Docs
+                    </a>
+                </div>
+
+                <div class="step-card">
+                    <h3>4.2: Instantly.ai - Email Automation</h3>
+                    <div class="what">
+                        <strong>📋 O QUE É:</strong>
+                        <p>Envio automático de emails + follow-ups + warming de domínios.</p>
+                    </div>
+                    <div class="why">
+                        <strong>💡 PORQUÊ (depois):</strong>
+                        <p>Em vez de copiar/colar 50 mensagens, Instantly envia + faz follow-up automático.</p>
+                    </div>
+                    <div class="how">
+                        <strong>✅ PASSOS (quando tiveres €500+ MRR):</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>Abre <a href="https://instantly.ai" target="_blank">instantly.ai</a></li>
+                            <li>Click "Get Started" (trial 14 dias)</li>
+                            <li>Upgrade para "Growth" plan (€97/mês, 5K emails/mês)</li>
+                            <li>Conecta Gmail/Outlook</li>
+                            <li>Cria "Campaign" → Upload CSV com leads</li>
+                            <li>Define sequência:
+                                <ul>
+                                    <li>Day 1: LinkedIn message</li>
+                                    <li>Day 3: Follow-up email</li>
+                                    <li>Day 7: Final touch</li>
+                                </ul>
+                            </li>
+                            <li>Activate → Instantly envia tudo automaticamente</li>
+                        </ol>
+                    </div>
+                    <a href="https://instantly.ai" target="_blank" class="button secondary">
+                        📧 Instantly.ai (€97/mês - MAIS TARDE)
+                    </a>
+                    <a href="https://help.instantly.ai/" target="_blank" class="button docs">
+                        📚 Instantly Help Center
+                    </a>
+                </div>
+
+                <div class="info-box">
+                    <h3>💰 ALTERNATIVA GRÁTIS (para já):</h3>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Tarefa</th>
+                            <th>Solução Grátis (MVP)</th>
+                            <th>Solução Paga (Scale)</th>
+                        </tr>
+                        <tr>
+                            <td>Scraping Leads</td>
+                            <td>Manual LinkedIn (3h)</td>
+                            <td>Apollo API (30s)</td>
+                        </tr>
+                        <tr>
+                            <td>Envio Mensagens</td>
+                            <td>Copiar/colar LinkedIn (1h)</td>
+                            <td>Instantly automation (0s)</td>
+                        </tr>
+                        <tr>
+                            <td>Follow-ups</td>
+                            <td>Google Calendar reminder</td>
+                            <td>Instantly sequences</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FASE 5: FRONTEND DASHBOARD -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">5</div>
+                    <div class="phase-title">
+                        <h2>Dashboard Web - Next.js + shadcn/ui</h2>
+                        <div class="phase-meta">
+                            <span class="badge time">⏱️ 1 dia (8h)</span>
+                            <span class="badge cost">💰 €0 (Vercel free)</span>
+                            <span class="badge difficulty">🔴 Avançado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>🎯 O QUE CONSTRUIR:</h3>
+                    <p>Dashboard onde clientes podem:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Login (email + password)</li>
+                        <li>Upload CSV de leads</li>
+                        <li>Ver leads processados + mensagens geradas</li>
+                        <li>Track responses/demos</li>
+                        <li>Ver estatísticas (quantos enviados, response rate)</li>
+                    </ul>
+                </div>
+
+                <div class="step-card">
+                    <h3>5.1: Setup Next.js Project</h3>
+                    <div class="how">
+                        <strong>✅ COMANDOS:</strong>
+                        <div class="code-block">
+# Criar projeto Next.js
+npx create-next-app@latest vendasia-dashboard
+# Choose: TypeScript ✅, Tailwind ✅, App Router ✅
+
+cd vendasia-dashboard
+
+# Instalar shadcn/ui (components bonitos)
+npx shadcn-ui@latest init
+
+# Instalar Supabase client
+npm install @supabase/supabase-js
+
+# Run local
+npm run dev
+# Abre: http://localhost:3000
+                        </div>
+                    </div>
+                    <a href="https://nextjs.org/docs" target="_blank" class="button docs">
+                        📚 Next.js Docs
+                    </a>
+                    <a href="https://ui.shadcn.com/" target="_blank" class="button docs">
+                        📚 shadcn/ui Components
+                    </a>
+                </div>
+
+                <div class="step-card">
+                    <h3>5.2: Páginas a Criar</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>1. Landing Page (vendasia.com)</h4>
+                            <ul>
+                                <li>Headline: "Autonomous SDR for Portuguese B2B"</li>
+                                <li>Demo video (Loom)</li>
+                                <li>Pricing: Beta €99 | Pro €299 | Scale €499</li>
+                                <li>CTA: "Start Free Trial"</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2. Login/Signup (/login)</h4>
+                            <ul>
+                                <li>Usa Supabase Auth</li>
+                                <li>Email + password</li>
+                                <li>"Forgot password" flow</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>3. Dashboard (/dashboard)</h4>
+                            <ul>
+                                <li>Stats cards: Leads processed, Messages sent, Response rate</li>
+                                <li>Recent activity feed</li>
+                                <li>Quick actions: "Upload CSV", "View Messages"</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>4. Leads (/dashboard/leads)</h4>
+                            <ul>
+                                <li>Tabela com todos os leads</li>
+                                <li>Filtros: Status, Fit Score, Industry</li>
+                                <li>Botão "Upload New CSV"</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>5. Messages (/dashboard/messages)</h4>
+                            <ul>
+                                <li>Lista de mensagens geradas</li>
+                                <li>Copy button para cada mensagem</li>
+                                <li>Mark as "Sent", "Response", "Demo booked"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>5.3: Integrar com Supabase + Stripe</h3>
+                    <div class="code-block">
+// lib/supabase.ts
+import { createClient } from '@supabase/supabase-js'
+
+export const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
+
+// app/dashboard/page.tsx
+import { supabase } from '@/lib/supabase'
+
+export default async function Dashboard() {
+  const { data: leads } = await supabase
+    .from('leads')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(10)
+
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      {leads?.map(lead => (
+        <div key={lead.id}>{lead.name} - {lead.company}</div>
+      ))}
+    </div>
+  )
+}
+                    </div>
+                    <a href="https://supabase.com/docs/guides/getting-started/quickstarts/nextjs" target="_blank" class="button docs">
+                        📚 Supabase + Next.js Tutorial
+                    </a>
+                </div>
+
+                <div class="checklist">
+                    <label>
+                        <input type="checkbox" id="nextjs-setup">
+                        Next.js project criado
+                    </label>
+                    <label>
+                        <input type="checkbox" id="pages-created">
+                        5 páginas criadas (Landing, Login, Dashboard, Leads, Messages)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="supabase-integrated">
+                        Supabase integrado (mostra leads da DB)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="deployed-vercel">
+                        Deployed para Vercel (URL pública)
+                    </label>
+                </div>
+            </div>
+
+            <!-- RESUMO FINAL -->
+            <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 40px; border-radius: 15px; margin-top: 50px;">
+                <h2 style="font-size: 2em; margin-bottom: 20px; text-align: center;">🎯 RESUMO: O QUE PRECISAS FAZER</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 10px; backdrop-filter: blur(10px);">
+                        <h3 style="margin-bottom: 15px;">📅 PRIMEIRO MÊS (Manual MVP)</h3>
+                        <ol style="margin-left: 20px;">
+                            <li>Scrape 50 leads manual</li>
+                            <li>Run process_leads.py</li>
+                            <li>Envia 20 mensagens</li>
+                            <li>Consegue 1-3 clientes @ €99-299</li>
+                            <li><strong>Revenue: €300-900/mês</strong></li>
+                        </ol>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 10px; backdrop-filter: blur(10px);">
+                        <h3 style="margin-bottom: 15px;">📅 DEPOIS (Automatizar)</h3>
+                        <ol style="margin-left: 20px;">
+                            <li>Setup Supabase + Railway + Vercel</li>
+                            <li>Deploy n8n</li>
+                            <li>Build dashboard Next.js</li>
+                            <li>Add Stripe checkout</li>
+                            <li><strong>Scale: 10-50 clientes</strong></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <h3 style="font-size: 1.8em; margin-bottom: 15px;">💰 CUSTO TOTAL POR FASE:</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                        <div style="background: rgba(16, 185, 129, 0.2); padding: 20px; border-radius: 10px;">
+                            <div style="font-size: 2.5em; font-weight: bold;">€0</div>
+                            <div>Fase 0-1 (MVP)</div>
+                        </div>
+                        <div style="background: rgba(59, 130, 246, 0.2); padding: 20px; border-radius: 10px;">
+                            <div style="font-size: 2.5em; font-weight: bold;">€25</div>
+                            <div>Fase 2-3 (Cloud)</div>
+                        </div>
+                        <div style="background: rgba(139, 92, 246, 0.2); padding: 20px; border-radius: 10px;">
+                            <div style="font-size: 2.5em; font-weight: bold;">€220</div>
+                            <div>Fase 4 (APIs)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center; font-size: 1.2em;">
+                    <p><strong>👉 COMEÇA PELA FASE 0!</strong></p>
+                    <p style="margin-top: 10px;">Valida com clientes ANTES de gastar tempo/dinheiro em infraestrutura.</p>
+                </div>
+            </div>
+
+            <!-- PRÓXIMO PASSO -->
+            <div style="background: #10b981; color: white; padding: 40px; text-align: center; margin-top: 40px; border-radius: 15px;">
+                <h2 style="font-size: 2.5em; margin-bottom: 20px;">🚀 PRÓXIMO PASSO IMEDIATO</h2>
+                <p style="font-size: 1.3em; margin-bottom: 30px;">
+                    Esquece cloud/stripe/n8n por agora.<br>
+                    <strong>VAI SCRAPE 50 EMPRESAS E VENDE O SERVIÇO MANUAL!</strong>
+                </p>
+                <a href="https://www.linkedin.com/search/results/people/?keywords=CEO%20SaaS%20Portugal" target="_blank" class="button" style="background: white; color: #10b981; font-size: 1.3em; padding: 20px 40px;">
+                    🎯 Começar Scraping AGORA
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Save checkbox state
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            const id = checkbox.id;
+            if (id) {
+                // Load saved state
+                const saved = localStorage.getItem(id);
+                if (saved === 'true') {
+                    checkbox.checked = true;
+                }
+                
+                // Save on change
+                checkbox.addEventListener('change', function() {
+                    localStorage.setItem(id, this.checked);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

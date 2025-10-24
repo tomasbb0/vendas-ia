@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; background-color: #f8f9fa; }
+      #keyForm { display: flex; flex-direction: column; gap: 15px; }
+      input[type="password"] { width: 100%; border: 1px solid #ccc; border-radius: 4px; padding: 8px; font-size: 14px; }
+      button { padding: 10px 15px; background-color: #4285F4; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+      button:hover { background-color: #357ae8; }
+      #status { margin-top: 15px; font-size: 14px; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <h3>Set Gemini API Key</h3>
+    <form id="keyForm">
+      <input type="password" id="apiKey" name="apiKey" placeholder="Enter your API key here">
+      <button type="submit">Save Key</button>
+    </form>
+    <div id="status"></div>
+
+    <script>
+      document.getElementById('keyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const key = document.getElementById('apiKey').value;
+        if (!key) {
+          document.getElementById('status').innerText = 'API Key cannot be empty.';
+          return;
+        }
+
+        document.getElementById('status').innerText = 'Saving...';
+        
+        google.script.run
+          .withSuccessHandler(function() {
+            document.getElementById('status').innerText = 'API Key saved successfully!';
+            setTimeout(() => google.script.host.close(), 1500);
+          })
+          .withFailureHandler(function(error) {
+            document.getElementById('status').innerText = 'Error: ' + error.message;
+          })
+          .setApiKey(key);
+      });
+    </script>
+  </body>
+</html>

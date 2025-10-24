@@ -1,324 +1,288 @@
-# VendasIA - O Seu Estagiário de Vendas IA 🚀
+# 🤖 AI Sales Toolkit by Tomás
 
-> Automatize a qualificação de leads B2B com IA em português
-> 
-> **Status**: 🏗️ Ready to Build | **Launch**: This Weekend | **Goal**: First Customer by Friday
+> **2 Products for Modern Sales Teams**  
+> Autonomous SDR Agent + M&A CRM with AI
 
 ---
 
-## ⚡ QUICK START (3 STEPS)
+## 📦 What's Inside This Monorepo
 
-### 1️⃣ Read This First
+This repository contains **2 AI-powered sales products**:
+
+### 1. 🤖 [VendasIA SDR](./vendasia-sdr/) - Autonomous Sales Agent
+**Generate personalized Portuguese B2B messages at scale**
+
+- ✅ AI-powered lead processing (Gemini 2.0 Flash)
+- ✅ Portuguese PT-PT native messages  
+- ✅ 1,500 leads/day FREE tier
+- ✅ LinkedIn + Email outreach
+- ✅ Response tracking & analytics
+
+**Perfect for**: Portuguese B2B sales teams, SDRs, founders doing outbound
+
+👉 **[Get Started →](./vendasia-sdr/README.md)**
+
+---
+
+### 2. 🌐 [Pairwire CRM](./pairwire-crm/) - M&A Deal Management
+**Google Sheets Add-on with AI Code Editor**
+
+- ✅ Lead tracking with Campaign Batches
+- ✅ Bulk email campaigns  
+- ✅ Email tracking (timestamps, responses)
+- ✅ AI Code Editor integrated
+- ✅ Real-time collaboration
+- ✅ Repository integration
+
+**Perfect for**: M&A advisors, investment bankers, fundraising consultants
+
+👉 **[Get Started →](./pairwire-crm/README.md)** | **[Use Template →](https://docs.google.com/spreadsheets/d/1-3vRM8y67szYUyQVhl6e7WGKpzNzJZQx8jSvcTozSJg/edit)**
+
+---
+
+## ⚡ Quick Start
+
+### VendasIA SDR
 ```bash
-# Open the main execution plan
-open START-HERE.md
+cd vendasia-sdr
+pip install -r requirements.txt
+python test_gemini.py
 ```
 
-### 2️⃣ Follow the Weekend Plan
-```bash
-# Open the detailed setup guide
-open docs/SETUP-GUIDE.md
-```
-
-### 3️⃣ Keep This Open
-```bash
-# Your weekend dashboard
-cat DASHBOARD.txt
-```
-
----
-
-## 🎯 What is VendasIA?
-
-**The Problem**: Portuguese B2B sales teams waste 20-40 hours/month manually qualifying leads that never convert.
-
-**The Solution**: AI-powered lead qualification that works 24/7 in Portuguese, saving €300-600/month for just €49-99/month.
-
-**The ROI**: 500-1200% immediate return on investment.
-
----
-
-## 📊 Project Status
-
-- **Current Phase**: No-Code MVP
-- **Launch Date**: This Weekend (26-27 Oct 2024)
-- **First Customer Goal**: 1st November 2024
-- **Week 1 Target**: 2 customers, €98 MRR
-- **Month 1 Target**: 3-5 customers, €147-245 MRR
-
----
-
-## 🗂️ Project Structure
-
-```
-vendas-ia/
-│
-├── 📄 START-HERE.md          ⭐ READ THIS FIRST
-├── ✅ EXECUTION-CHECKLIST.md  ⭐ YOUR WEEKEND PLAN
-├── 📊 DASHBOARD.txt           ⭐ KEEP THIS OPEN
-├── 📝 CHEAT-SHEET.md          ⭐ QUICK REFERENCE
-│
-├── 📂 docs/
-│   ├── SETUP-GUIDE.md         ⭐ STEP-BY-STEP INSTRUCTIONS
-│   ├── weekend-action-plan.md
-│   ├── demo-script.md
-│   └── system-architecture.md
-│
-├── 📂 workflows/
-│   ├── make-setup.md          # Make.com configuration
-│   ├── make-blueprint.json    # Importable workflow
-│   └── google-sheets-template.csv
-│
-├── 📂 content/
-│   ├── landing-page.md        # Portuguese copy
-│   └── landing-page.html      # Complete HTML
-│
-├── 📂 outreach/
-│   ├── linkedin-templates.md  # 4 message templates
-│   ├── prospect-research.md   # Research guide
-│   └── prospect-list.csv      # Track 50 companies
-│
-└── 📂 tracking/
-    ├── business-metrics.md    # KPI dashboard
-    └── daily-activity.csv     # Daily tracking
-```
-
----
-
-## 🎯 Weekend Execution Plan
-
-### Saturday Morning (3h) - BUILD
-✅ Create Make.com automation  
-✅ Connect GPT-4, Google Sheets, Gmail  
-✅ Test end-to-end workflow  
-
-### Saturday Afternoon (3h) - MARKET
-✅ Build Carrd landing page  
-✅ Create demo materials  
-✅ Prepare sales assets  
-
-### Sunday Morning (2h) - RESEARCH
-✅ Find 50 Portuguese B2B companies  
-✅ Research decision makers  
-✅ Create personalization notes  
-
-### Sunday Afternoon (3h) - LAUNCH
-✅ Send 50 LinkedIn messages  
-✅ Log in tracking system  
-✅ Set up follow-up schedule  
+### Pairwire CRM
+1. Open [template](https://docs.google.com/spreadsheets/d/1-3vRM8y67szYUyQVhl6e7WGKpzNzJZQx8jSvcTozSJg/edit)
+2. File → Make a copy
+3. Start tracking deals!
 
 ---
 
 ## 🛠️ Tech Stack
 
-### 🎯 NEW APPROACH: Hybrid Low-Code + Open-Source Forks
+### VendasIA SDR
+- **AI**: Google Gemini 2.0 Flash (1,500 requests/day FREE)
+- **Backup AI**: Groq Llama 3.1 70B (14,400 requests/day FREE)
+- **Web Search**: Tavily API (1,000 searches/month FREE)
+- **Language**: Python 3.9+
+- **Email**: Gmail SMTP (500/day FREE)
 
-### MVP Path 1: Pure Low-Code (Week 1-2, Sell @ €199/mês)
-- **Automation**: Make.com or **n8n** (self-hosted, MIT-ish)
-- **AI**: OpenAI GPT-4 (~€20/month)
-- **Database**: Google Sheets → **Supabase** (MIT, free tier)
-- **Website**: Carrd.co (€19/year)
-- **Agents**: **LangFlow** visual builder (MIT) ⭐
+**Total Cost**: €0/month
 
-**Total Cost**: €50/month  
-**Time**: 2 weeks  
-**Sellable**: YES! €199-299/mês
-
-### MVP Path 2: Production-Ready (Week 3-4, Sell @ €499/mês)
-- **Orchestration**: **n8n** (self-hosted) or **Activepieces** (MIT) ⭐
-- **Agents**: **LangChain + LangGraph** (MIT) ⭐
-- **Backend**: FastAPI + PostgreSQL (**Supabase**)
-- **Frontend**: Next.js + **shadcn/ui** (MIT) ⭐
-- **Hosting**: Vercel (frontend) + Railway (backend)
-
-**Total Cost**: €200/month (10 customers)  
-**Time**: 4 weeks  
-**Sellable**: YES! €499-999/mês  
-**Margin**: 90%+ 🚀
-
-### Why This Approach?
-✅ **80% open-source** (LangFlow, LangChain, n8n)  
-✅ **20% glue code** (Python/TypeScript)  
-✅ **Months of dev saved** (fork proven tools)  
-✅ **White-label ready** (MIT licenses)  
-✅ **Scale to enterprise** (self-hosted control)
-
-**See**: `docs/FORKS-AND-STACK.md` for complete analysis!
+### Pairwire CRM
+- **Platform**: Google Sheets + Apps Script
+- **UI**: HTML/CSS/JavaScript (Google Material Design)
+- **Deployment**: clasp (Google Apps Script CLI)
+- **Collaboration**: Real-time Google Sheets
+- **Cost**: 100% Free
 
 ---
 
-## 💰 Pricing & Revenue
+## 🎯 Features Comparison
 
-### Customer Plans
-- **Starter**: €49/mês (100 leads)
-- **Professional**: €99/mês (500 leads) ⭐ Recommended
-- **Enterprise**: €199/mês (unlimited)
-
-### Revenue Projections
-| Month | Customers | MRR | Action |
-|-------|-----------|-----|--------|
-| 1 | 3-5 | €147-245 | LinkedIn outreach |
-| 2 | 8-10 | €392-490 | Referrals |
-| 3 | 15-20 | €735-980 | Content marketing |
-| 6 | 80-120 | €3,920-5,880 | Real product |
-| 12 | 200-250 | €10k-12.5k | Y Combinator |
+| Feature | VendasIA SDR | Pairwire CRM |
+|---------|--------------|--------------|
+| **Use Case** | Outbound sales automation | M&A deal tracking |
+| **Target** | B2B sales teams 🇵🇹 | M&A professionals 💼 |
+| **AI Integration** | ✅ Gemini 2.0 | 🔄 Coming soon |
+| **Lead Processing** | ✅ Automated | ✅ Manual + Bulk |
+| **Email Campaigns** | 🔄 Phase 2 | ✅ Built-in |
+| **Collaboration** | ❌ Single user | ✅ Real-time multi-user |
+| **Platform** | Python CLI | Google Sheets |
+| **Cost** | €0/month | €0/month |
 
 ---
 
-## 🎯 Target Market
+## 📂 Repository Structure
 
-### Primary: Portuguese B2B SaaS
-- Company size: 10-50 employees
-- Active sales team
-- Current pain: Manual lead qualification
-- Budget: €100-500/month for tools
-
-### Secondary Markets
-- Digital marketing agencies
-- Business consulting firms
-- Tech services companies
-
-**Total Market**: 1.4M companies in Portugal
-
----
-
-## � Week 1 Metrics
-
-| Metric | Target | Status |
-|--------|--------|--------|
-| LinkedIn Messages | 50 | 📅 Planned |
-| Response Rate | 24% (12) | 📅 Planned |
-| Demos Booked | 5 | 📅 Planned |
-| Demos Completed | 3 | 📅 Planned |
-| Customers | 2 | 📅 Planned |
-| **MRR** | **€98** | **€0** |
-
----
-
-## 🚀 Next Steps
-
-### Right Now (5 min)
-1. ✅ Read `START-HERE.md`
-2. ✅ Open `DASHBOARD.txt` (keep it visible)
-3. ✅ Review `EXECUTION-CHECKLIST.md`
-
-### This Weekend
-1. ✅ Follow `docs/SETUP-GUIDE.md`
-2. ✅ Build automation (Saturday AM)
-3. ✅ Create landing page (Saturday PM)
-4. ✅ Research prospects (Sunday AM)
-5. ✅ Send 50 messages (Sunday PM)
-
-### Next Week
-1. ✅ Respond to LinkedIn messages
-2. ✅ Book and run 5 demos
-3. ✅ Close 2 customers
-4. ✅ Achieve €98 MRR
-
----
-
-## 📚 Key Documents
-
-### Start Here
-- `START-HERE.md` - Complete project overview
-- `EXECUTION-CHECKLIST.md` - Weekend action plan
-- `DASHBOARD.txt` - Visual dashboard
-
-### Setup & Build
-- `docs/SETUP-GUIDE.md` - Step-by-step instructions
-- `workflows/make-setup.md` - Automation setup
-- `content/landing-page.html` - Landing page code
-
-### Sales & Marketing
-- `outreach/linkedin-templates.md` - Message templates
-- `docs/demo-script.md` - Sales demo script
-- `tracking/business-metrics.md` - KPI tracking
-
----
-
-## 💡 Why VendasIA Will Work
-
-✅ **Real Pain**: Teams waste 60% of time on unqualified leads  
-✅ **Clear ROI**: €49 cost vs €300+ value = 500%+ ROI  
-✅ **Underserved Market**: Portuguese B2B tools are scarce  
-✅ **Proven Demand**: International competitors successful  
-✅ **Your Advantage**: Portuguese language + technical skills  
-✅ **Low Risk**: €3.58/month cost, 2 weeks to validate  
-
----
-
-## 🎯 Decision Points
-
-### End of Weekend
-✅ Working automation → Continue  
-❌ Technical issues → Manual process temporarily
-
-### End of Week 1
-✅ 1+ customer → Scale outreach  
-⚠️ 0 customers, 5+ demos → Improve pitch  
-❌ <5 demos → Improve messaging
-
-### End of Month 1
-✅ €200+ MRR → Build real product  
-⚠️ €50-200 MRR → Optimize conversion  
-❌ <€50 MRR → Pivot strategy
-
----
-
-## 🆘 Support & Resources
-
-### Documentation
-All guides in `/docs` folder
-
-### Technical Help
-- Make.com: help.make.com
-- OpenAI: help.openai.com
-- Carrd: carrd.co/support
-
-### Quick Commands
-```bash
-# View dashboard
-cat DASHBOARD.txt
-
-# Open setup guide
-open docs/SETUP-GUIDE.md
-
-# Test workflow
-curl -X POST YOUR_WEBHOOK_URL -d '{"nome":"Test"}'
+```
+vendas-ia/                     # Monorepo root
+├── README.md                  # This file
+├── .gitignore
+├── LICENSE
+│
+├── vendasia-sdr/              # 🤖 Product 1: SDR Agent
+│   ├── README.md
+│   ├── src/                   # Core Python code
+│   ├── test_gemini.py         # Test Gemini API
+│   ├── process_leads.py       # Batch processor
+│   ├── leads-manual.csv       # Input leads
+│   ├── leads_processed.json   # AI output
+│   ├── requirements.txt
+│   ├── docs/                  # Documentation
+│   │   ├── AI-STACK-COMPARISON.md
+│   │   ├── COMPLETE-ROADMAP.html
+│   │   └── SUCCESS.html
+│   ├── content/               # Email templates
+│   ├── demo/                  # Demo materials
+│   ├── tracking/              # Response tracking
+│   └── workflows/             # n8n automation (future)
+│
+├── pairwire-crm/              # 🌐 Product 2: M&A CRM
+│   ├── README.md
+│   ├── apps-script/           # Google Apps Script code
+│   │   ├── AIEditor.html
+│   │   ├── ApiKeyDialog.html
+│   │   ├── RepositoryDialog
+│   │   ├── RegisterFileDialog.html
+│   │   └── appsscript.json
+│   ├── sheets-template/
+│   │   └── TEMPLATE-LINK.txt  # Google Sheets template
+│   └── docs/
+│       └── SETUP.md
+│
+└── docs/                      # Shared documentation
+    ├── WEEKEND-BUILD-GUIDE.md
+    ├── DECISION-EXCEL-VS-CLOUD.html
+    └── EXCEL-MVP-GUIDE.html
 ```
 
 ---
 
-## 🏆 Success Vision
+## 🚀 Roadmap
 
-### This Weekend
-✅ Working automation  
-✅ Professional landing page  
-✅ 50 prospects contacted  
-✅ Ready to sell  
+### VendasIA SDR
 
-### Week 1
-✅ First customer paying €49-99  
-✅ Positive feedback  
-✅ Clear path forward  
+- ✅ **Phase 0**: Manual MVP (Python scripts) - **DONE**
+- 🔄 **Phase 1**: Cloud infrastructure (Supabase + Railway) - Starting soon
+- 📅 **Phase 2**: Stripe payments
+- 📅 **Phase 3**: n8n automation  
+- 📅 **Phase 4**: Apollo.io + Instantly.ai integration
+- 📅 **Phase 5**: Next.js dashboard
 
-### Month 12
-✅ €10K+ MRR  
-✅ Full-time on VendasIA  
-✅ Small team built  
-✅ Y Combinator application  
+### Pairwire CRM
 
----
-
-## 💪 Your Commitment
-
-> "Every successful SaaS started with 0 customers.  
-> The only difference is they got customer #1.  
-> You're 48 hours away from being them."
-
-**Let's build VendasIA this weekend! 🚀**
+- ✅ **V1.0**: Lead tracking + Email campaigns - **DONE**
+- ✅ **V1.1**: AI Code Editor - **DONE**
+- 🔄 **V2.0**: Gemini integration for AI messages - In progress
+- 📅 **V2.1**: Dashboard with charts
+- 📅 **V3.0**: Zapier/n8n webhooks
+- 📅 **V3.1**: Advanced analytics
 
 ---
 
-**VendasIA** - O Seu Estagiário de Vendas IA  
-Built with ❤️ in Portugal | Launch Date: 26-27 Oct 2024
+## 💡 Why 2 Products in 1 Repo?
+
+### Shared Technology
+- Both use Google Gemini for AI
+- Both target sales professionals
+- Shared utilities and helpers
+- Common authentication patterns
+
+### Portfolio Benefits
+- **Unified showcase**: "Multi-product AI toolkit"
+- **Single GitHub star**: Better visibility
+- **Easier maintenance**: One place for updates
+- **Code reuse**: DRY principles
+
+### Separation of Concerns
+- Each product has its own `/README.md`
+- Independent versioning
+- Different target audiences
+- Clear folder structure
+
+---
+
+## 📊 Success Metrics
+
+### VendasIA SDR
+- ✅ 10 test leads processed successfully
+- ✅ Portuguese PT-PT quality: 5/5
+- ✅ Gemini API working perfectly
+- 🎯 Goal: 1,500 leads/day capacity
+- 🎯 Target: €2,970/month profit at 10 customers
+
+### Pairwire CRM
+- ✅ Google Sheets template live
+- ✅ Apps Script UI functional
+- ✅ Email tracking working
+- 🎯 Goal: Real-time collaboration for teams
+- 🎯 Target: Used by M&A advisors
+
+---
+
+## 🤝 Contributing
+
+These are personal projects, but feedback is welcome!
+
+- **Issues**: Report bugs or suggest features
+- **PRs**: Small improvements accepted
+- **Discussions**: Share your use case
+
+---
+
+## 📄 License
+
+MIT License - See [LICENSE](./LICENSE) for details
+
+---
+
+## 👤 Author
+
+**Tomás Batalha**
+- GitHub: [@tomasbb0](https://github.com/tomasbb0)
+- Building AI tools for sales teams 🚀
+
+---
+
+## 🙏 Acknowledgments
+
+- **Google Gemini** for free AI API tier
+- **Groq** for blazing-fast inference
+- **Google Apps Script** for Sheets automation
+- **MIT** open-source community
+
+---
+
+## 📚 Documentation
+
+### VendasIA SDR
+- [Main README](./vendasia-sdr/README.md)
+- [AI Stack Comparison](./vendasia-sdr/docs/AI-STACK-COMPARISON.md)
+- [Complete Roadmap](./vendasia-sdr/docs/COMPLETE-ROADMAP.html)
+- [Success Guide](./vendasia-sdr/docs/SUCCESS.html)
+
+### Pairwire CRM
+- [Main README](./pairwire-crm/README.md)
+- [Google Sheets Template](https://docs.google.com/spreadsheets/d/1-3vRM8y67szYUyQVhl6e7WGKpzNzJZQx8jSvcTozSJg/edit)
+- [Apps Script Setup](./pairwire-crm/docs/SETUP.md)
+
+### Shared Docs
+- [Weekend Build Guide](./docs/WEEKEND-BUILD-GUIDE.md)
+- [Excel vs Cloud Decision](./docs/DECISION-EXCEL-VS-CLOUD.html)
+- [Excel MVP Guide](./docs/EXCEL-MVP-GUIDE.html)
+
+---
+
+## 🎓 Learn More
+
+### Articles & Guides
+- How I built an AI SDR for €0/month
+- Portuguese B2B sales automation  
+- Google Sheets as a CRM platform
+- Monorepo strategy for SaaS products
+
+### Tech Stack Deep Dives
+- Why Gemini 2.0 > GPT-4 for Portuguese
+- Google Apps Script best practices
+- Python CLI tools for sales
+
+---
+
+## ⭐ Star This Repo!
+
+If you find these tools useful, please star the repo! It helps others discover it.
+
+**[⭐ Star on GitHub →](https://github.com/tomasbb0/vendas-ia)**
+
+---
+
+## 📞 Get In Touch
+
+Questions? Want to collaborate?
+
+- Open an issue
+- Email: [Your email if you want]
+- LinkedIn: [Your LinkedIn if you want]
+
+---
+
+**Built with ❤️ in Portugal 🇵🇹**

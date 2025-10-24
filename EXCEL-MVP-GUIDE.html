@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Como Melhorar o Teu Excel/Sheets MVP - Guia Completo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.8em; margin-bottom: 15px; }
+        .content { padding: 40px; }
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #10b981;
+        }
+        .section h2 { color: #065f46; margin-bottom: 20px; font-size: 1.8em; }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .option-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.2);
+        }
+        .option-card.recommended {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+        .option-card h3 { color: #065f46; margin-bottom: 15px; }
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .badge.pro { background: #d1fae5; color: #065f46; }
+        .badge.con { background: #fee2e2; color: #991b1b; }
+        .badge.winner { background: #10b981; color: white; }
+        .code-block {
+            background: #1f2937;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 15px 0;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success-box {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .checklist {
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .checklist label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 6px;
+        }
+        .checklist label:hover { background: #f3f4f6; }
+        .checklist input[type="checkbox"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        ul { margin: 15px 0; padding-left: 25px; }
+        ul li { margin: 8px 0; }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        table th {
+            background: #065f46;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        table td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        table tr:hover { background: #f3f4f6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Como Melhorar o Teu MVP</h1>
+            <p style="font-size: 1.3em; margin-top: 15px;">Excel vs Google Sheets vs Repo Separado - Guia Completo</p>
+        </div>
+
+        <div class="content">
+            <div class="info-box">
+                <h3 style="font-size: 1.3em; margin-bottom: 15px;">🎯 TUA SITUAÇÃO ATUAL:</h3>
+                <ul>
+                    <li><strong>Tens:</strong> Google Sheets Add-on no repo <code>gtmpairwire</code> (privado)</li>
+                    <li><strong>Tens:</strong> Script Python (<code>process_leads.py</code>) no repo <code>vendas-ia</code></li>
+                    <li><strong>Objetivo:</strong> Melhorar MVP e organizar melhor</li>
+                    <li><strong>Dúvida:</strong> Onde colocar o Excel/Sheets MVP? Mesmo repo ou separado?</li>
+                </ul>
+            </div>
+
+            <h2 style="text-align: center; margin: 40px 0; font-size: 2.2em;">🤔 OPÇÃO 1 vs OPÇÃO 2</h2>
+
+            <div class="comparison">
+                <!-- OPÇÃO 1: TUDO NO VENDAS-IA -->
+                <div class="option-card recommended">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                        <span style="font-size: 2em;">📦</span>
+                        <h3>OPÇÃO 1: Tudo no vendas-ia (RECOMENDADO)</h3>
+                    </div>
+                    <span class="badge winner">🏆 MELHOR PARA MVP</span>
+                    
+                    <h4 style="margin-top: 20px; color: #065f46;">✅ VANTAGENS:</h4>
+                    <ul>
+                        <li><strong>Centralized</strong> - Tudo num sítio</li>
+                        <li><strong>Fácil manter</strong> - 1 repo só</li>
+                        <li><strong>Público</strong> - Mostra portfolio</li>
+                        <li><strong>Git history</strong> - Track mudanças</li>
+                        <li><strong>README</strong> - Documenta tudo</li>
+                    </ul>
+
+                    <h4 style="margin-top: 15px; color: #991b1b;">❌ DESVANTAGENS:</h4>
+                    <ul>
+                        <li>Repo fica maior</li>
+                        <li>Mistura MVP com tools</li>
+                    </ul>
+                </div>
+
+                <!-- OPÇÃO 2: REPOS SEPARADOS -->
+                <div class="option-card">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                        <span style="font-size: 2em;">🗂️</span>
+                        <h3>OPÇÃO 2: Repos separados</h3>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px; color: #065f46;">✅ VANTAGENS:</h4>
+                    <ul>
+                        <li><strong>Organizado</strong> - Cada projeto separado</li>
+                        <li><strong>Clean</strong> - Repo focado</li>
+                        <li><strong>Permissões</strong> - Privado vs Público</li>
+                    </ul>
+
+                    <h4 style="margin-top: 15px; color: #991b1b;">❌ DESVANTAGENS:</h4>
+                    <ul>
+                        <li><strong>Espalhado</strong> - Código em múltiplos sítios</li>
+                        <li><strong>Difícil manter</strong> - 2+ repos para atualizar</li>
+                        <li><strong>Confuso</strong> - Qual repo é qual?</li>
+                        <li><strong>Duplicação</strong> - Código repetido</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎯 MINHA RECOMENDAÇÃO: Estrutura Unificada</h2>
+                
+                <div class="success-box">
+                    <h3 style="margin-bottom: 15px;">📁 ESTRUTURA IDEAL DO REPO vendas-ia:</h3>
+                    <div class="code-block">vendas-ia/
+├── README.md                      # Documentação principal
+├── docs/                          # Documentação extra
+├── src/                           # Core Python code
+│   ├── vendasia_free_agent.py    # Main agent
+│   └── excel_integration.py      # NEW: Excel automation
+├── mvp/                           # 🆕 NOVA PASTA!
+│   ├── excel/                    
+│   │   ├── VendasIA_Template.xlsx      # Excel template
+│   │   ├── excel_processor.py          # Script que popula Excel
+│   │   └── README.md                   # Como usar
+│   ├── google-sheets/
+│   │   ├── apps-script/               # Google Apps Script code
+│   │   │   ├── AIEditor.html
+│   │   │   ├── Code.gs
+│   │   │   └── appsscript.json
+│   │   ├── template-link.txt          # Link para template público
+│   │   └── README.md                  # Setup instructions
+│   └── notion/                        # BONUS: Notion template
+│       └── README.md
+├── scripts/                       # Automation scripts
+│   ├── setup.sh
+│   └── deploy.sh
+├── tracking/                      # Customer tracking
+├── workflows/                     # n8n workflows (futuro)
+└── .env.example
+</div>
+                </div>
+
+                <div class="section">
+                    <h2>🚀 MELHORIAS CONCRETAS PARA O TEU MVP</h2>
+                    
+                    <h3 style="margin: 25px 0 15px 0; font-size: 1.5em;">1️⃣ Excel vs Google Sheets - Qual usar?</h3>
+                    
+                    <table>
+                        <tr>
+                            <th>Critério</th>
+                            <th>Excel (.xlsx)</th>
+                            <th>Google Sheets</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Automação</strong></td>
+                            <td>Python (openpyxl)</td>
+                            <td>Apps Script (JavaScript)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Colaboração</strong></td>
+                            <td>❌ Tem de enviar ficheiro</td>
+                            <td style="background: #d1fae5;">✅ Real-time, link share</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cliente acesso</strong></td>
+                            <td>Email ficheiro</td>
+                            <td style="background: #d1fae5;">✅ Link direto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grátis</strong></td>
+                            <td>✅ Precisa Office</td>
+                            <td style="background: #d1fae5;">✅ 100% grátis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Familiaridade</strong></td>
+                            <td style="background: #d1fae5;">✅ Mais comum</td>
+                            <td>Menos familar</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recomendação</strong></td>
+                            <td>Para processar local</td>
+                            <td style="background: #d1fae5;"><strong>🏆 Para clientes</strong></td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <h3>💡 MELHOR ESTRATÉGIA:</h3>
+                        <p style="font-size: 1.1em; line-height: 1.8;">
+                            <strong>HÍBRIDO!</strong><br><br>
+                            1. <strong>TU usas Python</strong> → Processa leads, gera mensagens<br>
+                            2. <strong>Output para Google Sheets</strong> → Cliente vê results em real-time<br>
+                            3. <strong>Cliente partilha interno</strong> → Equipa acede mesmo sheet<br><br>
+                            = Automação (Python) + Colaboração (Google Sheets) = WIN!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📊 MELHORIAS ESPECÍFICAS DO TEU GOOGLE SHEETS</h2>
+                    
+                    <h3 style="margin-bottom: 15px;">O que tens agora no gtmpairwire:</h3>
+                    <ul>
+                        <li>✅ Google Apps Script Add-on</li>
+                        <li>✅ UI (AIEditor, ApiKeyDialog)</li>
+                        <li>✅ Integração repository</li>
+                    </ul>
+
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">✨ MELHORIAS PARA FAZER:</h3>
+
+                    <div style="margin: 20px 0;">
+                        <h4 style="color: #065f46;">🎨 1. Adicionar Sheets Templates</h4>
+                        <ul>
+                            <li><strong>Sheet 1: Leads Input</strong>
+                                <ul>
+                                    <li>Colunas: Name | Company | Title | LinkedIn URL | Email | Industry | Country</li>
+                                    <li>Data validation: Dropdowns para Industry</li>
+                                    <li>Formatação condicional: Highlight novos</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sheet 2: AI Messages</strong>
+                                <ul>
+                                    <li>Colunas: Lead Name | Pain Point 1 | Pain Point 2 | Hook | Message | Fit Score | Generated Date</li>
+                                    <li>Button "Generate Messages" → Chama Gemini via Apps Script</li>
+                                    <li>Copy button ao lado de cada mensagem</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sheet 3: Tracking</strong>
+                                <ul>
+                                    <li>Colunas: Lead | Message Sent Date | Channel (LinkedIn/Email) | Response? | Response Text | Demo Booked? | Status</li>
+                                    <li>Dropdowns: Status (Sent | Responded | Demo | Closed Won | Closed Lost)</li>
+                                    <li>Timestamps automáticos</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sheet 4: Dashboard</strong>
+                                <ul>
+                                    <li>Charts: Response rate over time</li>
+                                    <li>Demos booked this week/month</li>
+                                    <li>Top performing industries</li>
+                                    <li>Messages generated count</li>
+                                    <li>Auto-refresh</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="margin: 20px 0;">
+                        <h4 style="color: #065f46;">🔧 2. Adicionar Funcionalidades Apps Script</h4>
+                        <div class="code-block">// Code.gs - Melhorias a adicionar
+
+// 1. Gemini Integration
+function generateMessages() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Leads Input');
+  const data = sheet.getDataRange().getValues();
+  const apiKey = PropertiesService.getUserProperties().getProperty('GEMINI_API_KEY');
+  
+  // Loop cada lead
+  for (let i = 1; i < data.length; i++) {
+    const lead = {
+      name: data[i][0],
+      company: data[i][1],
+      title: data[i][2]
+    };
+    
+    // Call Gemini API
+    const message = callGeminiAPI(lead, apiKey);
+    
+    // Write to "AI Messages" sheet
+    writeToMessagesSheet(lead, message);
+  }
+  
+  SpreadsheetApp.getUi().alert('✅ ' + (data.length - 1) + ' messages generated!');
+}
+
+// 2. One-click Copy
+function copyMessageToClipboard(row) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('AI Messages');
+  const message = sheet.getRange(row, 5).getValue(); // Column 5 = Message
+  
+  // Show in modal for easy copy
+  const html = HtmlService.createHtmlOutput('<textarea style="width:100%;height:200px">' + message + '</textarea>')
+      .setWidth(400)
+      .setHeight(250);
+  SpreadsheetApp.getUi().showModalDialog(html, '💬 Copy Message');
+}
+
+// 3. Auto-update Dashboard
+function refreshDashboard() {
+  const trackingSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Tracking');
+  const data = trackingSheet.getDataRange().getValues();
+  
+  // Calculate metrics
+  const totalSent = data.length - 1;
+  const responses = data.filter(row => row[3] === 'Yes').length; // Column 4 = Response?
+  const demos = data.filter(row => row[5] === 'Yes').length; // Column 6 = Demo Booked?
+  
+  // Update Dashboard sheet
+  const dashboard = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Dashboard');
+  dashboard.getRange('B2').setValue(totalSent);
+  dashboard.getRange('B3').setValue(responses);
+  dashboard.getRange('B4').setValue(demos);
+  dashboard.getRange('B5').setValue(responses / totalSent * 100 + '%');
+}
+
+// 4. Menu Custom
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('🤖 VendasIA')
+      .addItem('Generate Messages', 'generateMessages')
+      .addItem('Refresh Dashboard', 'refreshDashboard')
+      .addSeparator()
+      .addItem('⚙️ Settings', 'showSettings')
+      .addToUi();
+}
+</div>
+                    </div>
+
+                    <div style="margin: 20px 0;">
+                        <h4 style="color: #065f46;">📱 3. UI Improvements</h4>
+                        <ul>
+                            <li><strong>Sidebar</strong> em vez de dialog → Mais espaço</li>
+                            <li><strong>Progress bar</strong> quando gera mensagens</li>
+                            <li><strong>Toast notifications</strong> → Feedback visual</li>
+                            <li><strong>Keyboard shortcuts</strong> → Ctrl+Shift+G = Generate</li>
+                            <li><strong>Theme</strong> → Cores VendasIA brand</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📋 PLANO DE AÇÃO - O QUE FAZER AGORA</h2>
+                
+                <div class="checklist">
+                    <h3 style="margin-bottom: 15px;">✅ FASE 1: Reorganizar (30 min)</h3>
+                    <label>
+                        <input type="checkbox" id="step1">
+                        <span><strong>1.</strong> Criar pasta <code>mvp/</code> no repo vendas-ia</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step2">
+                        <span><strong>2.</strong> Mover código do gtmpairwire para <code>mvp/google-sheets/</code></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step3">
+                        <span><strong>3.</strong> Criar README.md em cada subpasta (Excel vs Google Sheets)</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step4">
+                        <span><strong>4.</strong> Decidir: Manter gtmpairwire privado ou tornar público?</span>
+                    </label>
+                </div>
+
+                <div class="checklist">
+                    <h3 style="margin-bottom: 15px;">✅ FASE 2: Melhorar Google Sheets MVP (2-3h)</h3>
+                    <label>
+                        <input type="checkbox" id="step5">
+                        <span><strong>5.</strong> Criar template Google Sheets com 4 sheets (Leads, Messages, Tracking, Dashboard)</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step6">
+                        <span><strong>6.</strong> Adicionar função <code>generateMessages()</code> no Apps Script</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step7">
+                        <span><strong>7.</strong> Criar menu custom "VendasIA" com botões</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step8">
+                        <span><strong>8.</strong> Adicionar charts automáticos no Dashboard sheet</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step9">
+                        <span><strong>9.</strong> Testar com 10 leads reais</span>
+                    </label>
+                </div>
+
+                <div class="checklist">
+                    <h3 style="margin-bottom: 15px;">✅ FASE 3: Criar Excel Version (2h) - OPCIONAL</h3>
+                    <label>
+                        <input type="checkbox" id="step10">
+                        <span><strong>10.</strong> Criar template Excel (.xlsx) com mesmas 4 sheets</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step11">
+                        <span><strong>11.</strong> Python script <code>excel_processor.py</code> → Popula Excel automaticamente</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step12">
+                        <span><strong>12.</strong> Testar: CSV input → Excel output com mensagens</span>
+                    </label>
+                </div>
+
+                <div class="checklist">
+                    <h3 style="margin-bottom: 15px;">✅ FASE 4: Documentar & Partilhar (1h)</h3>
+                    <label>
+                        <input type="checkbox" id="step13">
+                        <span><strong>13.</strong> Criar video demo (Loom 3 min) → Como usar</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step14">
+                        <span><strong>14.</strong> Publicar template Google Sheets → Link público "View Only Template"</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step15">
+                        <span><strong>15.</strong> Atualizar README.md principal com screenshots</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="step16">
+                        <span><strong>16.</strong> Partilhar no LinkedIn → "Built this tool for Portuguese B2B sales"</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎯 DECISÃO FINAL: O QUE FAZER COM OS REPOS</h2>
+                
+                <h3 style="margin-bottom: 20px;">Cenário 1: Consolidar Tudo (RECOMENDADO)</h3>
+                <div class="success-box">
+                    <h4>✅ Mover gtmpairwire para vendas-ia</h4>
+                    <div class="code-block">cd /Users/tomasbatalha/Projects/vendas-ia
+
+# Criar estrutura
+mkdir -p mvp/google-sheets/apps-script
+
+# Copiar ficheiros
+cp /Users/tomasbatalha/Projects/gtmpairwire/AIEditor mvp/google-sheets/apps-script/
+cp /Users/tomasbatalha/Projects/gtmpairwire/ApiKeyDialog mvp/google-sheets/apps-script/
+cp /Users/tomasbatalha/Projects/gtmpairwire/*.json mvp/google-sheets/apps-script/
+
+# Criar README
+cat > mvp/google-sheets/README.md << 'EOF'
+# VendasIA Google Sheets MVP
+
+## 🎯 O Que É
+
+Add-on para Google Sheets que gera mensagens LinkedIn personalizadas com AI.
+
+## 🚀 Como Usar
+
+1. Abre o [Template](link-aqui)
+2. File → Make a copy
+3. Extensions → VendasIA → Generate Messages
+4. Done!
+
+## 📊 Sheets Incluídas
+
+- **Leads Input**: Cola leads scraped
+- **AI Messages**: Mensagens geradas automaticamente
+- **Tracking**: Track responses
+- **Dashboard**: Stats & charts
+
+## 🔧 Setup Apps Script
+
+Ver pasta `apps-script/` para código fonte.
+EOF
+
+# Commit
+git add mvp/
+git commit -m "Add Google Sheets MVP from gtmpairwire"
+git push
+</div>
+                </div>
+
+                <p style="margin-top: 15px;"><strong>Depois:</strong> Arquiva ou deleta repo gtmpairwire (já está no vendas-ia)</p>
+                </div>
+
+                <h3 style="margin: 30px 0 20px 0;">Cenário 2: Manter Separado</h3>
+                <div class="info-box">
+                    <h4>🗂️ Renomear gtmpairwire → vendasia-sheets-mvp</h4>
+                    <div class="code-block">cd /Users/tomasbatalha/Projects/gtmpairwire
+
+# Renomear repo no GitHub
+gh repo rename vendasia-sheets-mvp
+
+# Limpar e organizar
+mkdir -p src templates docs
+mv AIEditor src/
+mv ApiKeyDialog src/
+# ... organizar resto
+
+# Criar README completo
+# Commit changes
+git push
+```
+````

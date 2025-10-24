@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendasIA - Setup MVP Grátis em 10 Minutos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 15px;
+        }
+
+        .step h2 {
+            display: inline-block;
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .step-time {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .step p {
+            margin: 15px 0 15px 55px;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        .links {
+            margin: 20px 0 10px 55px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 5px 5px 5px 0;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0 15px 55px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .code-block code {
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid #43cea2;
+        }
+
+        .highlight h3 {
+            color: #185a9d;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .checklist {
+            margin: 15px 0 15px 55px;
+        }
+
+        .checklist label {
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .checklist label:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .checklist input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .footer {
+            background: #2d2d2d;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer .emoji {
+            font-size: 2em;
+            margin: 10px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0 15px 55px;
+            border-radius: 5px;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 15px 0 15px 55px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 VendasIA MVP Grátis</h1>
+            <p>Setup Completo em 10 Minutos</p>
+            <div style="margin-top: 20px;">
+                <span class="badge">💰 €0/mês</span>
+                <span class="badge">🇵🇹 Português Nativo</span>
+                <span class="badge">⚡ 1,500 leads/dia</span>
+                <span class="badge">♾️ Grátis Forever</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="number">€0</span>
+                    <span class="label">Custo Mensal</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">10min</span>
+                    <span class="label">Setup Total</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">1,500</span>
+                    <span class="label">Leads/Dia Grátis</span>
+                </div>
+            </div>
+
+            <!-- STEP 1 -->
+            <div class="step">
+                <span class="step-number">1</span>
+                <h2>LangFlow</h2>
+                <span class="step-time">⏱️ 2 min</span>
+                
+                <p>Visual builder para criar agents AI sem código. Arrasta, conecta, done!</p>
+                
+                <div class="code-block"><code># Opção A - Docker (Recomendado)
+docker run -d -p 7860:7860 --name langflow langflowai/langflow:latest
+
+# Opção B - Python (se não tiveres Docker)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv pip install langflow -U
+uv run langflow run</code></div>
+
+                <div class="links">
+                    <a href="http://localhost:7860" target="_blank" class="btn pulse">
+                        🎨 Abrir LangFlow
+                    </a>
+                    <a href="https://docs.langflow.org/get-started-installation" target="_blank" class="btn btn-secondary">
+                        📚 Docs LangFlow
+                    </a>
+                </div>
+
+                <div class="success">
+                    ✅ <strong>Checkpoint:</strong> LangFlow aberto em http://localhost:7860
+                </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step">
+                <span class="step-number">2</span>
+                <h2>Google Gemini API</h2>
+                <span class="step-time">⏱️ 2 min</span>
+                
+                <p><strong>⭐ PRINCIPAL</strong> - Melhor em português PT-PT! Treinado nativamente.</p>
+                
+                <div class="checklist">
+                    <label>
+                        <input type="checkbox" id="gemini1">
+                        <span>Abrir Google AI Studio</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="gemini2">
+                        <span>Click "Get API Key" → "Create API Key"</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="gemini3">
+                        <span>Copy key que começa com <code>AIza...</code></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="gemini4">
+                        <span>Guardar em Notes/TextEdit</span>
+                    </label>
+                </div>
+
+                <div class="links">
+                    <a href="https://makersuite.google.com/app/apikey" target="_blank" class="btn pulse">
+                        🔑 Get Gemini Key
+                    </a>
+                    <a href="https://ai.google.dev/gemini-api/docs" target="_blank" class="btn btn-secondary">
+                        📖 Gemini Docs
+                    </a>
+                </div>
+
+                <div class="warning">
+                    <strong>💡 Limites FREE:</strong> 1,500 requests/dia = 750 leads/dia processados
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="step">
+                <span class="step-number">3</span>
+                <h2>Groq API</h2>
+                <span class="step-time">⏱️ 2 min</span>
+                
+                <p><strong>🚀 BACKUP</strong> - Super rápido! 10x mais veloz que GPT-4. Para bursts.</p>
+                
+                <div class="checklist">
+                    <label>
+                        <input type="checkbox" id="groq1">
+                        <span>Sign up no Groq (email ou Google)</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="groq2">
+                        <span>Dashboard → "API Keys"</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="groq3">
+                        <span>Click "Create API Key"</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="groq4">
+                        <span>Copy key que começa com <code>gsk_...</code></span>
+                    </label>
+                </div>
+
+                <div class="links">
+                    <a href="https://console.groq.com/keys" target="_blank" class="btn pulse">
+                        ⚡ Get Groq Key
+                    </a>
+                    <a href="https://console.groq.com/docs/quickstart" target="_blank" class="btn btn-secondary">
+                        📄 Groq Quickstart
+                    </a>
+                </div>
+
+                <div class="warning">
+                    <strong>💡 Limites FREE:</strong> 14,400 requests/dia = backup IMENSO!
+                </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step">
+                <span class="step-number">4</span>
+                <h2>Tavily API</h2>
+                <span class="step-time">⏱️ 1 min</span>
+                
+                <p><strong>🔍 WEB SEARCH</strong> - Para fazer research de empresas portuguesas.</p>
+                
+                <div class="checklist">
+                    <label>
+                        <input type="checkbox" id="tavily1">
+                        <span>Sign up no Tavily</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tavily2">
+                        <span>Dashboard → "API Keys"</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tavily3">
+                        <span>Copy key que começa com <code>tvly-...</code></span>
+                    </label>
+                </div>
+
+                <div class="links">
+                    <a href="https://app.tavily.com/" target="_blank" class="btn pulse">
+                        🔎 Get Tavily Key
+                    </a>
+                    <a href="https://docs.tavily.com/" target="_blank" class="btn btn-secondary">
+                        📕 Tavily Docs
+                    </a>
+                </div>
+
+                <div class="warning">
+                    <strong>💡 Limites FREE:</strong> 1,000 créditos/mês = 500 company researches
+                </div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="step">
+                <span class="step-number">5</span>
+                <h2>Build Agent Visual</h2>
+                <span class="step-time">⏱️ 10 min</span>
+                
+                <p>Agora vais criar o agent no LangFlow! Drag-and-drop, sem código.</p>
+                
+                <div class="checklist">
+                    <label>
+                        <input type="checkbox" id="build1">
+                        <span>Abrir LangFlow: http://localhost:7860</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="build2">
+                        <span>Click "New Flow" → Nome: "VendasIA Research"</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="build3">
+                        <span>Arrasta: <strong>Text Input</strong> → Label: "company_name"</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="build4">
+                        <span>Arrasta: <strong>Tavily Search</strong> → Cola API key</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="build5">
+                        <span>Arrasta: <strong>Google Generative AI</strong> (Flash) → Cola Gemini key</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="build6">
+                        <span>Arrasta: <strong>Google Generative AI</strong> (Pro) → Cola Gemini key</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="build7">
+                        <span>Arrasta: <strong>Chat Output</strong></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="build8">
+                        <span>Conecta: Input → Tavily → Gemini Flash → Gemini Pro → Output</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="build9">
+                        <span>Click "Run" → Test com "TechCorp PT"</span>
+                    </label>
+                </div>
+
+                <div class="links">
+                    <a href="http://localhost:7860" target="_blank" class="btn btn-success pulse">
+                        🎨 Build Agent AGORA
+                    </a>
+                    <a href="https://docs.langflow.org/components/components" target="_blank" class="btn btn-info">
+                        📦 Ver Todos Components
+                    </a>
+                </div>
+
+                <div class="success">
+                    ✅ <strong>Sucesso:</strong> Agent deve gerar mensagem LinkedIn para "TechCorp PT"!
+                </div>
+            </div>
+
+            <!-- STEP 6 -->
+            <div class="step">
+                <span class="step-number">6</span>
+                <h2>Test com 10 Empresas</h2>
+                <span class="step-time">⏱️ 5 min</span>
+                
+                <p>Process batch de empresas portuguesas reais!</p>
+                
+                <div class="code-block"><code># Cria CSV de teste
+cat > test-companies.csv << 'EOF'
+company_name
+TechCorp PT
+SaaS Portugal
+InnovaSoft Lisboa
+CloudTech Porto
+DataFlow Braga
+B2B Solutions Coimbra
+Sales Automation PT
+Growth Labs Lisboa
+TechStartup Porto
+Digital Ventures Faro
+EOF</code></div>
+
+                <div class="checklist">
+                    <label>
+                        <input type="checkbox" id="test1">
+                        <span>Criar ficheiro <code>test-companies.csv</code></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="test2">
+                        <span>No LangFlow: Add node "CSV Input"</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="test3">
+                        <span>Upload CSV</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="test4">
+                        <span>Connect: CSV → (resto do flow)</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="test5">
+                        <span>Click "Run All" → Vai buscar café ☕</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="test6">
+                        <span>Review resultados: mensagens boas?</span>
+                    </label>
+                </div>
+
+                <div class="success">
+                    🎉 <strong>Parabéns!</strong> Tens um agent AI funcional que qualifica leads em português!
+                </div>
+            </div>
+
+            <!-- HIGHLIGHT BOX -->
+            <div class="highlight">
+                <h3>🎬 DICA PRO: Grava Demo!</h3>
+                <p>Enquanto o agent processa as 10 empresas:</p>
+                <ol style="margin-left: 20px;">
+                    <li>Abre QuickTime → Nova Gravação de Ecrã</li>
+                    <li>Grava 2-3 minutos do agent a trabalhar</li>
+                    <li>Explica: "Isto qualifica 100 leads/dia automaticamente"</li>
+                    <li>Usa este vídeo no LinkedIn outreach! 🚀</li>
+                </ol>
+            </div>
+
+            <!-- NEXT STEPS -->
+            <div class="step">
+                <span class="step-number">✨</span>
+                <h2>Próximos Passos</h2>
+                
+                <p><strong>Agora que tens MVP funcional:</strong></p>
+                
+                <div style="margin: 20px 0 20px 55px;">
+                    <h4 style="color: #667eea; margin-bottom: 10px;">📅 Este Fim de Semana:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">✅ Scrape 50 empresas reais do LinkedIn</li>
+                        <li style="padding: 8px 0;">✅ Process com agent → pega top 20 (score ≥7)</li>
+                        <li style="padding: 8px 0;">✅ Envia 20 mensagens LinkedIn</li>
+                        <li style="padding: 8px 0;">✅ Track responses</li>
+                    </ul>
+                </div>
+
+                <div style="margin: 20px 0 20px 55px;">
+                    <h4 style="color: #667eea; margin-bottom: 10px;">🎯 Semana 1 Goals:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">📊 50 leads researched</li>
+                        <li style="padding: 8px 0;">📧 20 messages sent</li>
+                        <li style="padding: 8px 0;">💬 5 replies (25% rate)</li>
+                        <li style="padding: 8px 0;">📞 2 demos booked</li>
+                    </ul>
+                </div>
+
+                <div class="links">
+                    <a href="./QUICKSTART-FREE.md" class="btn btn-success">
+                        📖 Guia Completo
+                    </a>
+                    <a href="./docs/AI-STACK-COMPARISON.md" class="btn btn-info">
+                        🔬 Comparação AI Models
+                    </a>
+                    <a href="./docs/FORKS-AND-STACK.md" class="btn btn-secondary">
+                        🔥 MIT Forks & Stack
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="emoji">🚀 💰 🇵🇹</div>
+            <h3>Estás pronto para começar!</h3>
+            <p>Custo: €0/mês • Limites: 1,500 leads/dia • Português: NATIVO</p>
+            <p style="margin-top: 20px; opacity: 0.7;">
+                Made with ❤️ for Portuguese B2B founders
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Persist checkbox state
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            const savedState = localStorage.getItem(checkbox.id);
+            if (savedState === 'true') {
+                checkbox.checked = true;
+            }
+            
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(this.id, this.checked);
+            });
+        });
+
+        // Confetti effect when all checkboxes in a step are checked
+        document.querySelectorAll('.step').forEach(step => {
+            const checkboxes = step.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const allChecked = Array.from(checkboxes).every(c => c.checked);
+                    if (allChecked) {
+                        step.style.background = 'linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%)';
+                        setTimeout(() => {
+                            step.style.background = '#f8f9fa';
+                        }, 2000);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

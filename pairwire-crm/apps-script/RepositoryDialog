@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      /* Styles are the same clean version */
+      *, *:before, *:after { box-sizing: border-box; }
+      body {
+        font-family: 'Google Sans', 'Roboto', 'Arial', sans-serif;
+        margin: 0; background-color: #ffffff; border-radius: 8px;
+        box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+        padding: 24px; color: #3c4043; line-height: 1.5; width: 100%;
+        min-height: 100vh; overflow-y: auto;
+      }
+      body > * { width: 100%; max-width: 750px; margin: 0 auto; }
+      h3 {
+        font-size: 1.25rem; font-weight: 500; color: #202124; margin-top: 0;
+        margin-bottom: 20px; text-align: center;
+      }
+      .file-list {
+        border: 1px solid #dadce0; border-radius: 8px; max-height: 400px;
+        overflow-y: auto; margin-bottom: 20px; background-color: #fcfcfc;
+      }
+      .file-item {
+        padding: 12px 16px; border-bottom: 1px solid #eee; display: flex;
+        justify-content: space-between; align-items: center;
+      }
+      .file-item:last-child { border-bottom: none; }
+      .file-name { font-weight: 500; }
+      .delete-button {
+        background: none; border: none; cursor: pointer; padding: 5px;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .delete-button svg {
+        width: 20px; height: 20px; fill: #5f6368;
+        transition: fill 0.2s;
+      }
+      .delete-button:hover svg { fill: #ea4335; }
+      #status { margin-top: 15px; font-size: 0.875rem; text-align: center; color: #5f6368; }
+    </style>
+  </head>
+  <body>
+    <h3>Code Repository</h3>
+
+    <h5>Files in Repository:</h5>
+    <div id="fileList" class="file-list">
+      Loading files...
+    </div>
+    
+    <div id="status"></div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        loadRepositoryFiles();
+      });
+
+      function loadRepositoryFiles() {
+        document.getElementById('fileList').innerHTML = 'Loading files...';
+        google.script.run
+          .withSuccessHandler(function(fileNames) {
+            const fileListDiv = document.getElementById('fileList');
+            fileListDiv.innerHTML = ''; 
+
+            if (fileNames.length === 0 || fileNames[0].startsWith('Error')) {
+              fileListDiv.innerHTML = `<div class="file-item">${fileNames[0] || 'No files found in repository.'}</div>`;
+              return;
+            }
+
+            fileNames.forEach(name => {
+              const div = document.createElement('div');
+              div.className = 'file-item';
+              div.innerHTML = `
+                <span class="file-name">${name}</span>
+                <button class="delete-button" title="Delete ${name}" onclick="confirmDelete('${name}')">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path>
+                  </svg>
+                </button>
+              `;
+              fileListDiv.appendChild(div);
+            });
+          })
+          .withFailureHandler(function(error) {
+            document.getElementById('fileList').innerHTML = `<div class="file-item" style="color:red;">Error loading files: ${error.message}</div>`;
+          })
+          .getUniqueFileNamesInRepository();
+      }
+
+      function confirmDelete(fileName) {
+        const confirmation = confirm(`Are you sure you want to permanently delete all versions of "${fileName}" from the repository? This cannot be undone.`);
+        if (confirmation) {
+          document.getElementById('status').innerText = `Deleting "${fileName}"...`;
+          google.script.run
+            .withSuccessHandler(function(response) {
+              document.getElementById('status').innerText = response.message;
+              loadRepositoryFiles();
+            })
+            .withFailureHandler(function(error) {
+              document.getElementById('status').innerText = `Error deleting file: ${error.message}`;
+            })
+            .deleteFileFromRepository(fileName);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+[
+  {
+    "name": "João Silva",
+    "company": "TechCorp PT",
+    "title": "CEO",
+    "linkedin_url": "linkedin.com/in/joaosilva",
+    "email_guess": "joao@techcorp.pt",
+    "pain_points": [
+      "Dificuldade em escalar as vendas de forma previsível",
+      "Falta de visibilidade clara do funil de vendas e da performance da equipa"
+    ],
+    "hook": "Vi que a TechCorp PT está a crescer rapidamente. Imagino que o João esteja à procura de otimizar o processo de vendas para acompanhar esse crescimento.",
+    "fit_score": 8,
+    "message": "João, vejo o crescimento da TechCorp PT! Escalar vendas pode ser um desafio. Vale conversar sobre como automatizar para mais previsibilidade? ",
+    "processed_at": "2025-10-24T13:27:19.518856"
+  },
+  {
+    "name": "Maria Santos",
+    "company": "SaaS Portugal",
+    "title": "Co-Founder",
+    "linkedin_url": "linkedin.com/in/mariasantos",
+    "email_guess": "maria@saasportugal.com",
+    "pain_points": [
+      "Dificuldade em escalar as vendas de forma eficiente e previsível.",
+      "Demora em fechar negócios devido a processos manuais e falta de visibilidade no funil de vendas."
+    ],
+    "hook": "Vi que são Co-Founders de uma SaaS em Portugal. Imagino a correria para conciliar tudo, desde produto até vendas.",
+    "fit_score": 8,
+    "message": "Maria, escalar as vendas da SaaS Portugal é um desafio, certo? Automatizar pode ajudar. Vale conversar sobre isso? 🚀",
+    "processed_at": "2025-10-24T13:27:29.610720"
+  },
+  {
+    "name": "Pedro Costa",
+    "company": "InnovaSoft",
+    "title": "CTO",
+    "linkedin_url": "linkedin.com/in/pedrocosta",
+    "email_guess": "pedro@innovasoft.pt",
+    "pain_points": [
+      "Dificuldade em escalar o processo de qualificação de leads",
+      "Falta de visibilidade do ROI das campanhas de marketing digital"
+    ],
+    "hook": "Vi que a InnovaSoft tem crescido rapidamente. Imagino o desafio de manter a equipa de vendas alinhada com o marketing.",
+    "fit_score": 8,
+    "message": "Pedro, vi que és CTO na InnovaSoft. A escalar vendas, sentem falta de +automação? Vale conversar?",
+    "processed_at": "2025-10-24T13:27:31.067444"
+  },
+  {
+    "name": "Ana Rodrigues",
+    "company": "CloudTech",
+    "title": "Head of Sales",
+    "linkedin_url": "linkedin.com/in/anarodrigues",
+    "email_guess": "ana@cloudtech.pt",
+    "pain_points": [
+      "Dificuldade em escalar a equipa de vendas face ao crescimento da CloudTech",
+      "Falta de visibilidade granular sobre o funil de vendas e performance da equipa"
+    ],
+    "hook": "Vi que a CloudTech está a crescer imenso! Curioso para saber como estão a lidar com a gestão da equipa.",
+    "fit_score": 8,
+    "message": "Ana, vi o crescimento da CloudTech! Escalar a equipa está a ser desafiante? Vale conversar sobre automação para ajudar? 😉",
+    "processed_at": "2025-10-24T13:27:36.674667"
+  },
+  {
+    "name": "Carlos Mendes",
+    "company": "DataFlow",
+    "title": "Founder",
+    "linkedin_url": "linkedin.com/in/carlosmendes",
+    "email_guess": "carlos@dataflow.pt",
+    "pain_points": [
+      "Dificuldade em escalar a prospeção de novos clientes.",
+      "Falta de visibilidade clara do pipeline de vendas e das oportunidades em curso."
+    ],
+    "hook": "Vi que és Founder da DataFlow. A escalar a equipa, a gestão de leads torna-se complexa, certo?",
+    "fit_score": 8,
+    "message": "Carlos, a DataFlow cresce rápido! A escalar, manter a tração nas vendas é um desafio... Vale conversar sobre como automatizar isso? 😉",
+    "processed_at": "2025-10-24T13:27:39.747907"
+  },
+  {
+    "name": "Sofia Alves",
+    "company": "B2B Solutions",
+    "title": "CEO",
+    "linkedin_url": "linkedin.com/in/sofiaalves",
+    "email_guess": "sofia@b2bsolutions.pt",
+    "pain_points": [
+      "Dificuldade em escalar a prospeção de novos clientes B2B de forma consistente",
+      "Ciclos de venda longos e complexos que afetam a previsibilidade de receita"
+    ],
+    "hook": "Vi que a B2B Solutions foca em simplificar processos. Imagino que também procurem simplificar a vossa própria aquisição de clientes.",
+    "fit_score": 8,
+    "message": "Sofia, com a vossa expansão, escalar a prospeção B2B deve ser um desafio. Vale conversar sobre automação? 👋",
+    "processed_at": "2025-10-24T13:27:43.250153"
+  },
+  {
+    "name": "Miguel Ferreira",
+    "company": "Sales Automation PT",
+    "title": "Co-Founder",
+    "linkedin_url": "linkedin.com/in/miguelferreira",
+    "email_guess": "miguel@salesautomation.pt",
+    "pain_points": [
+      "Escalabilidade das vendas sem aumentar significativamente a equipa",
+      "Falta de visibilidade do pipeline de vendas e dificuldades em prever resultados"
+    ],
+    "hook": "Vi que são co-fundadores na Sales Automation PT. Presumo que a vossa própria automatização de vendas seja prioritária! 🚀",
+    "fit_score": 8,
+    "message": "Miguel, a escalar a Sales Automation PT, imagino que otimizar o pipeline seja crucial. Vale conversar sobre como automatizar isso? 😉",
+    "processed_at": "2025-10-24T13:27:45.434748"
+  },
+  {
+    "name": "Inês Martins",
+    "company": "Growth Labs",
+    "title": "Head of Growth",
+    "linkedin_url": "linkedin.com/in/inesmartins",
+    "email_guess": "ines@growthlabs.pt",
+    "pain_points": [
+      "Dificuldade em escalar aquisição de clientes de forma consistente e previsível",
+      "Falta de visibilidade e controle sobre o ciclo de vendas, resultando em perda de oportunidades"
+    ],
+    "hook": "Vi que a Growth Labs está a apostar forte em growth. Como é que estão a gerir o funil de vendas para garantir o máximo ROI?",
+    "fit_score": 8,
+    "message": "Inês, a Growth Labs parece top! Escalar aquisição é sempre desafio, certo? Automação pode ajudar. Vale conversar?",
+    "processed_at": "2025-10-24T13:27:50.795374"
+  },
+  {
+    "name": "Ricardo Sousa",
+    "company": "TechStartup",
+    "title": "CEO",
+    "linkedin_url": "linkedin.com/in/ricardosousa",
+    "email_guess": "ricardo@techstartup.pt",
+    "pain_points": [
+      "Dificuldade em escalar as vendas de forma eficiente com recursos limitados.",
+      "Falta de visibilidade e controle sobre o pipeline de vendas, dificultando a previsão de receita."
+    ],
+    "hook": "Vi que estão a inovar no [setor da TechStartup]. Com as equipas a crescer, a automação de vendas pode ajudar a manter o foco no que interessa: o produto.",
+    "fit_score": 8,
+    "message": "Ricardo, a TechStartup parece promissora! A escalar as vendas pode ser um desafio. Vale conversar sobre automação para otimizar processos? 😉",
+    "processed_at": "2025-10-24T13:27:52.710821"
+  },
+  {
+    "name": "Catarina Lopes",
+    "company": "Digital Ventures",
+    "title": "Founder",
+    "linkedin_url": "linkedin.com/in/catarinalopes",
+    "email_guess": "catarina@digitalventures.pt",
+    "pain_points": [
+      "Escalabilidade das vendas sem aumentar drasticamente os custos",
+      "Dificuldade em manter o pipeline de vendas consistente e previsível"
+    ],
+    "hook": "Vi que a Digital Ventures está focada em inovação digital. Imagino que a automatização de vendas seja crucial para manter a vossa vantagem competitiva.",
+    "fit_score": 8,
+    "message": "Catarina, a escalar a Digital Ventures, sentes que o pipeline tem fugido? Vale conversar sobre como a automação pode ajudar? ",
+    "processed_at": "2025-10-24T13:27:56.610948"
+  }
+]

@@ -1,0 +1,40 @@
+# ====================================
+# 🆓 100% FREE TIER DEPENDENCIES
+# ====================================
+
+# Google Gemini (FREE - 1.5M tokens/month!)
+google-generativeai>=0.3.0
+
+# Core dependencies
+pandas>=2.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# ====================================
+# 💰 PAID TIER (Install when revenue > €200/month)
+# ====================================
+
+# OpenAI (Optional - only when scaling)
+# openai>=1.3.0
+
+# Advanced features (uncomment when needed)
+# langchain>=0.1.0
+# langgraph>=0.0.1
+# pinecone-client>=3.0.0
+# celery>=5.3.0
+# fastapi>=0.104.0
+# sqlalchemy>=2.0.0
+# psycopg2-binary>=2.9.0
+# redis>=5.0.0requests>=2.31.0
+pandas>=2.0.0
+python-dotenv>=1.0.0
+
+# For advanced features (install later)
+# langchain>=0.1.0
+# langgraph>=0.0.20
+# pinecone-client>=3.0.0
+# celery>=5.3.0
+# fastapi>=0.108.0
+# sqlalchemy>=2.0.0
+# psycopg2-binary>=2.9.0
+# redis>=5.0.0
