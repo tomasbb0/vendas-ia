@@ -111,20 +111,39 @@ vendas-ia/
 
 ## 🛠️ Tech Stack
 
-### MVP (This Weekend)
-- **Automation**: Make.com (free tier)
-- **AI**: OpenAI GPT-4 (~€2/month)
-- **Database**: Google Sheets (free)
+### 🎯 NEW APPROACH: Hybrid Low-Code + Open-Source Forks
+
+### MVP Path 1: Pure Low-Code (Week 1-2, Sell @ €199/mês)
+- **Automation**: Make.com or **n8n** (self-hosted, MIT-ish)
+- **AI**: OpenAI GPT-4 (~€20/month)
+- **Database**: Google Sheets → **Supabase** (MIT, free tier)
 - **Website**: Carrd.co (€19/year)
-- **Email**: Gmail (free)
+- **Agents**: **LangFlow** visual builder (MIT) ⭐
 
-**Total Cost**: €3.58/month
+**Total Cost**: €50/month  
+**Time**: 2 weeks  
+**Sellable**: YES! €199-299/mês
 
-### Future (Phase 2 - Month 2+)
-- **Product**: Fork Activepieces or Langflow (MIT licensed)
-- **Stack**: TypeScript/Node.js/React
-- **Hosting**: Vercel/Railway
-- **Database**: PostgreSQL
+### MVP Path 2: Production-Ready (Week 3-4, Sell @ €499/mês)
+- **Orchestration**: **n8n** (self-hosted) or **Activepieces** (MIT) ⭐
+- **Agents**: **LangChain + LangGraph** (MIT) ⭐
+- **Backend**: FastAPI + PostgreSQL (**Supabase**)
+- **Frontend**: Next.js + **shadcn/ui** (MIT) ⭐
+- **Hosting**: Vercel (frontend) + Railway (backend)
+
+**Total Cost**: €200/month (10 customers)  
+**Time**: 4 weeks  
+**Sellable**: YES! €499-999/mês  
+**Margin**: 90%+ 🚀
+
+### Why This Approach?
+✅ **80% open-source** (LangFlow, LangChain, n8n)  
+✅ **20% glue code** (Python/TypeScript)  
+✅ **Months of dev saved** (fork proven tools)  
+✅ **White-label ready** (MIT licenses)  
+✅ **Scale to enterprise** (self-hosted control)
+
+**See**: `docs/FORKS-AND-STACK.md` for complete analysis!
 
 ---
 
